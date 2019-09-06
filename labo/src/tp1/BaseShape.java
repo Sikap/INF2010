@@ -10,12 +10,12 @@ public class BaseShape {
 
     // TODO Initialiser les points.
     public BaseShape() {
-        Set<Point2d> coords= new HashSet<Point2d>();
+       // Set<Point2d> coords= new HashSet<Point2d>();
     }
 
     // TODO prendre une liste de points et creer une nouvelle forme.
     public BaseShape(Collection<Point2d> coords) {
-    this.coords=coords;
+    	this.coords=(Set<Point2d>)coords;	
     }
 
     // TODO ajouter ou retirer des coordonnees a la liste de points.
@@ -46,31 +46,31 @@ public class BaseShape {
     // TODO appliquer la translation sur la forme.
     public BaseShape translate(Point2d point) {
         
-        this.coords= new Point2d(this.coords.X()+point.X(),this.coords.Y()+point.Y());
-        return this;
+        //his.coords= new Point2d(this.coords.X()+point.X(),this.coords.Y()+point.Y());
+        return null;
     }
 
     // TODO appliquer la translation sur la liste.
     public Set<Point2d> translateAll(Point2d point) {
-        this.coords= new Point2d(this.coords.X()+point.X(),this.coords.Y()+point.Y());
+        //this.coords= new Point2d(this.coords.X()+point.X(),this.coords.Y()+point.Y());
         return this.coords;
     }
 
     // TODO appliquer la rotation sur la forme.
     public BaseShape rotate(Double angle) {
-        Double XRotation=Math.cos(angle)*this.X()+sin(angle)*this.Y();
+      /*  Double XRotation=Math.cos(angle)*this.X()+sin(angle)*this.Y();
         Double YRotation=Math.sin(angle)*this.X()+cos(angle)*this.Y();
         this.coords.vecteur[0]=XRotation;
-        this.coords.vecteur[1]=YRotationl;
+        this.coords.vecteur[1]=YRotationl;*/
         return this;
     }
 
     // TODO appliquer la rotation sur la liste.
     public Set<Point2d> rotateAll(Double angle) {
-        Double XRotation=Math.cos(angle)*this.X()+sin(angle)*this.Y();
+        /*Double XRotation=Math.cos(angle)*this.X()+sin(angle)*this.Y();
         Double YRotation=Math.sin(angle)*this.X()+cos(angle)*this.Y();
         this.coords.vecteur[0]=XRotation;
-        this.coords.vecteur[1]=YRotationl;
+        this.coords.vecteur[1]=YRotationl;*/
         return this.coords;
     }
 
