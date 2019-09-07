@@ -15,7 +15,7 @@ public class BaseShape {
 
     // TODO prendre une liste de points et creer une nouvelle forme.
     public BaseShape(Collection<Point2d> coords) {
-    	this.coords=(Set<Point2d>)coords;	
+    	//this.coords=(Set<Point2d>)coords;	
     }
 
     // TODO ajouter ou retirer des coordonnees a la liste de points.
