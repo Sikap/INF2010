@@ -15,7 +15,7 @@ public final class PointOperator {
 
     // TODO appliquer la rotation sur le vecteur d'entree.
     public static Double[] rotate(Double[] vector, Double[][] rotationMatrix) {
-    	Double[] tramslte ={};
+    	Double[] tramslte =new Double[3];
     	for(int i=0;i<3;i++){tramslte[i]=0.0;}
     	for(int i=0;i<3;i++){
     		for(int j=0;j<3;j++){
