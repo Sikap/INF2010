@@ -11,7 +11,7 @@ public class Point2d extends AbstractPoint {
 
     // TODO creer un point a partir d'un vecteur de donnees
     public Point2d(Double[] vector) {
-        super(vector);
+        super(new Double[] {vector[0],vector[1]});
     }
 
     public Double X() { return vector[X];}
@@ -46,9 +46,9 @@ public class Point2d extends AbstractPoint {
 
     // TODO prendre un angle de rotation, creer une matrice et appliquer la rotation.
     public Point2d rotate(Double angle) {
-        Double xTranslation=Math.cos(angle)*this.X()-Math.sin(angle)*this.Y();
-        Double yTranslation=Math.sin(angle)*this.X()+Math.cos(angle)*this.Y();
-        vector[X]=xTranslation;
+        Double xTranslation=this.X()*Math.cos(angle)-this.Y()*Math.sin(angle);
+        Double yTranslation=this.X()*Math.sin(angle)+this.Y()*Math.cos(angle);
+        vector[X]=xTranslation;//transforme mon double en int
         vector[Y]=yTranslation;
         return this;
     }

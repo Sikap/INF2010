@@ -65,7 +65,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1567885731904</updated>
-      <workItem from="1567885733843" duration="1625000" />
+      <workItem from="1567885733843" duration="3115000" />
+      <workItem from="1567963329955" duration="7165000" />
     </task>
     <servers />
   </component>
@@ -77,7 +78,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -87,6 +90,7 @@
     <watches-manager>
       <configuration name="Application">
         <watch expression="tramslte" />
+        <watch expression="test.X.value" />
       </configuration>
     </watches-manager>
   </component>
