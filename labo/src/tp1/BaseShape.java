@@ -10,7 +10,7 @@ public class BaseShape {
 
     // TODO Initialiser les points.
     public BaseShape() {
-       Set<Point2d> coords= new HashSet<Point2d>();
+       coords= new HashSet<Point2d>();
     }
 
     // TODO prendre une liste de points et creer une nouvelle forme.
@@ -60,6 +60,7 @@ public class BaseShape {
        Double YRotation=Math.sin(angle)*this.X()+cos(angle)*this.Y();
         this.coords.vecteur[0]=XRotatio;
         this.coords.vecteur[1]=YRotationl;*/
+
         Iterator<Point2d> itr=this.coords.iterator();
         while (itr.hasNext()) {
          itr.next().rotate(angle);
