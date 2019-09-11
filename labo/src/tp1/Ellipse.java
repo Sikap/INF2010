@@ -1,12 +1,15 @@
 package tp1;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Ellipse extends BaseShape {
     // TODO creer une ellipse avec une largeur et une longueur.
     public Ellipse(Double widthRadius, Double heightRadius) {
-        /*Point2d Point=new Point2d(widthRadius,heightRadius);
-        this.Ellipse(Point);ne fonction pas */
+        Set<Point2d> coords = new HashSet<Point2d>();
+        Point2d point = new Point2d(widthRadius,heightRadius);
+        coords.add(point);
+       new Ellipse(coords);
     }
 
     private Ellipse(Set<Point2d> coords) {
