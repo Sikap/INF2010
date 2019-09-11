@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="29d6b59f-290e-4d59-8e43-c370d8ce6720" name="Default Changelist" comment="" />
+    <list default="true" id="29d6b59f-290e-4d59-8e43-c370d8ce6720" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/labo/tp1/BaseShape.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/labo/tp1/BaseShape.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/labo/tp1/Ellipse.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/labo/tp1/Ellipse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/labo/tp1/Rectangle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/labo/tp1/Rectangle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/BaseShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/BaseShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/Ellipse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/Ellipse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/Rectangle.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +30,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -68,6 +77,9 @@
       <workItem from="1567885733843" duration="3115000" />
       <workItem from="1567963329955" duration="7165000" />
       <workItem from="1568066160282" duration="586000" />
+      <workItem from="1568227439208" duration="191000" />
+      <workItem from="1568227748889" duration="28000" />
+      <workItem from="1568232038164" duration="1157000" />
     </task>
     <servers />
   </component>
