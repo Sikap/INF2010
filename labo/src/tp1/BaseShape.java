@@ -22,63 +22,60 @@ public class BaseShape {
     // TODO ajouter ou retirer des coordonnees a la liste de points.
     public void add(Point2d coord) {this.coords.add(coord); }
     public void add(BaseShape shape) {
-        this.coords.addAll(shape.coords);
+        this.addAll(shape.coords);
     }
     public void addAll(Collection<Point2d> coords) { this.coords.addAll(coords); }
     public void remove(Point2d coord) { this.coords.remove(coord); }
     public void remove(BaseShape shape) {
-
-            this.coords.removeAll(shape.coords);
+        this.removeAll(shape.coords);
     }
     public void removeAll(Collection<Point2d> coords) { this.coords.removeAll(coords); }
 
     // TODO retourne les coordonnees de la liste.
-    public Set<Point2d> getCoords() {return this.coords; }
+    public Set<Point2d> getCoords() {
+        Set<Point2d> Coords= new HashSet<Point2d>(this.coords);
+        return Coords;
+    }
 
     // TODO appliquer la translation sur la forme.
     public BaseShape translate(Point2d point) {
-
         Iterator<Point2d> itr=this.coords.iterator();
+        Set<Point2d> Point= new HashSet<Point2d>() ;
         while (itr.hasNext()) {
-            itr.next().translate(point);
+            Point.add(itr.next().translate(point));
         }
-        return this;
+
+        return new BaseShape(Point);
     }
 
     // TODO appliquer la translation sur la liste.
     public Set<Point2d> translateAll(Point2d point) {
         Iterator<Point2d> itr=this.coords.iterator();
+        Set<Point2d> Point= new HashSet<Point2d>() ;
         while (itr.hasNext()) {
-            itr.next().translate(point);
+            Point.add(itr.next().translate(point));
         }
-        return this.coords;
+        return Point;
     }
 
     // TODO appliquer la rotation sur la forme.
     public BaseShape rotate(Double angle) {
-       /*Double XRotation=Math.cos(angle)*this.X()+sin(angle)*this.Y();
-       Double YRotation=Math.sin(angle)*this.X()+cos(angle)*this.Y();
-        this.coords.vecteur[0]=XRotatio;
-        this.coords.vecteur[1]=YRotationl;*/
-
         Iterator<Point2d> itr=this.coords.iterator();
+        Set<Point2d> Point= new HashSet<Point2d>() ;
         while (itr.hasNext()) {
-         itr.next().rotate(angle);
+            Point.add(itr.next().rotate(angle));
         }
-        return this;
+        return new BaseShape(Point);
     }
 
     // TODO appliquer la rotation sur la liste.
     public Set<Point2d> rotateAll(Double angle) {
-        /* Double XRotation=Math.cos(angle)*this.X()+sin(angle)*this.Y();
-        Double YRotation=Math.sin(angle)*this.X()+cos(angle)*this.Y();
-        this.coords.vecteur[0]=XRotation;
-        this.coords.vecteur[1]=YRotation;*/
         Iterator<Point2d> itr=this.coords.iterator();
+        Set<Point2d> Point= new HashSet<Point2d>() ;
         while (itr.hasNext()) {
-         itr.next().rotate(angle);
+            Point.add(itr.next().rotate(angle));
         }
-        return this.coords;
+        return Point;
     }
 
     // TODO retourner une nouvelle forme.

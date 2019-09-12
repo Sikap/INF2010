@@ -8,7 +8,18 @@ public final class LetterFactory {
     final static Double stripeThickness = maxHeight / 10;
 
     // TODO
-    public static BaseShape create_H() {
+    public static BaseShape create_H()
+    {
+        /*Double degrees90 = Math.toRadians(90);
+        Double degrees0 = Math.toRadians(0);
+        Double spacing = stripeThickness * 2;
+        BaseShape mainStripe = new Rectangle(stripeThickness, maxHeight);
+        BaseShape leftStripe = mainStripe.rotate(degrees0).translate(new Point2d(-spacing, 0.0));
+        BaseShape middleStripe=mainStripe.rotate(degrees90).translate(new Point2d(-spacing, 0.0));
+        BaseShape rightStripe = mainStripe.rotate(degrees0).translate(new Point2d(spacing, 0.0));
+        leftStripe.add(middleStripe);
+        leftStripe.add(rightStripe);
+        return leftStripe;*/
         return null;
     }
 
