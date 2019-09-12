@@ -86,6 +86,7 @@
       <workItem from="1568298226883" duration="190000" />
       <workItem from="1568298508161" duration="2435000" />
       <workItem from="1568307467030" duration="1783000" />
+      <workItem from="1568324289829" duration="1972000" />
     </task>
     <task id="LOCAL-00001" summary="12/20">
       <created>1568233382934</created>
@@ -121,6 +122,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="12/20" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/tp1/PointOperator.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="tramslte" />

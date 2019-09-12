@@ -6,23 +6,25 @@ public final class PointOperator {
     // TODO appliquer la translation sur le vecteur d'entree.
     public static Double[] translate(Double[] vector, Double[] translateVector) {
         int lengthVector=vector.length;
-        Double[] tramslte =new Double[lengthVector];
+        Double[] dTramslate =new Double[lengthVector];
         for (int i=0;i<lengthVector;i++){
-            tramslte[i]=vector[i]+translateVector[i];
+            dTramslate[i]=vector[i]+translateVector[i];
         }
-        return tramslte;
+        return dTramslate;
     }
 
     // TODO appliquer la rotation sur le vecteur d'entree.
     public static Double[] rotate(Double[] vector, Double[][] rotationMatrix) {
-    	Double[] tramslte =new Double[3];
-    	for(int i=0;i<3;i++){tramslte[i]=0.0;}
-    	for(int i=0;i<3;i++){
-    		for(int j=0;j<3;j++){
-    			tramslte[i]=tramslte[i]+(vector[j]*rotationMatrix[i][j]);
+        int lengthRotation=rotationMatrix.length;
+        int lengthVector=vector.length;
+    	Double[] dRotate =new Double[vector.length];
+    	for (int i=0;i<lengthVector;i++){dRotate[i]=0.0;}
+    	for(int i=0;i<lengthVector;i++){
+    		for(int j=0;j<lengthRotation;j++){
+                dRotate[i]=dRotate[i]+(vector[j]*rotationMatrix[i][j]);
     		}
     	}
-        return tramslte;
+        return dRotate;
     }
         
     // TODO appliquer le facteur de division sur le vecteur d'entree.
