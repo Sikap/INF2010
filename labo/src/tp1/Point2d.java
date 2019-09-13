@@ -18,7 +18,6 @@ public class Point2d extends AbstractPoint {
     public Double Y() { return vector[Y];}
 
     // TODO prendre un vecteur de donnees et appliquer la translation.
-    //a veriffier plus tart si return un new point est une erreur
     @Override
     public Point2d translate(Double[] translateVector) {
         Double xTranslation=this.X()+translateVector[X];
@@ -27,7 +26,6 @@ public class Point2d extends AbstractPoint {
     }
 
     // TODO prendre un point et appliquer la translation.
-    //a veriffier plus tart si return un new point est une erreur
     public Point2d translate(Point2d translateVector) {
         Double xTranslation=this.X()+translateVector.X();
         Double yTranslation=this.Y()+translateVector.Y();
@@ -37,8 +35,8 @@ public class Point2d extends AbstractPoint {
     // TODO prendre un vecteur de donnees et appliquer la translation.
     @Override
     public Point2d rotate(Double[][] rotationMatrix) {
-        Double xRotate=rotationMatrix[0][0]*this.X()-rotationMatrix[0][1]*this.Y();
-        Double yRotate=rotationMatrix[1][0]*this.X()+rotationMatrix[1][1]*this.Y();
+        Double xRotate=rotationMatrix[X][X]*this.X()-rotationMatrix[X][Y]*this.Y();
+        Double yRotate=rotationMatrix[Y][X]*this.X()+rotationMatrix[Y][Y]*this.Y();
         return new Point2d(xRotate,yRotate);
     }
 
