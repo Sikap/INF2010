@@ -59,13 +59,16 @@ public final class PointOperator {
 
     // TODO retourne la coordonnee avec les plus grandes valeurs en X et en Y.
     public static Point2d getMaxCoord(Collection<Point2d> coords) {
-        Point2d MaxCoord= coords.stream().findFirst().get();
+        Point2d MaxCoord;
+        if(0!=coords.size()){
+            MaxCoord= coords.stream().findFirst().get();
         for (Point2d listCoords: coords) {
             if(MaxCoord.X()<listCoords.X())
                 MaxCoord=new Point2d(listCoords.X(),MaxCoord.Y());
             if (MaxCoord.Y()<listCoords.Y())
                 MaxCoord=new Point2d(MaxCoord.X(),listCoords.Y());
         }
+        }else MaxCoord =new Point2d(0.0,0.0);
         return MaxCoord;
     }
 
