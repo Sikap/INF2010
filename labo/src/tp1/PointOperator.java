@@ -59,7 +59,7 @@ public final class PointOperator {
 
     // TODO retourne la coordonnee avec les plus grandes valeurs en X et en Y.
     public static Point2d getMaxCoord(Collection<Point2d> coords) {
-        Point2d MaxCoord= coords.iterator().next();
+        Point2d MaxCoord= coords.stream().findFirst().get();
         for (Point2d listCoords: coords) {
             if(MaxCoord.X()<listCoords.X())
                 MaxCoord=new Point2d(listCoords.X(),MaxCoord.Y());
@@ -71,7 +71,7 @@ public final class PointOperator {
 
     // TODO retourne la coordonnee avec les plus petites valeurs en X et en Y.
     public static Point2d getMinCoord(Collection<Point2d> coords) {
-       Point2d MinCoord = coords.iterator().next();
+       Point2d MinCoord = coords.stream().findFirst().get();
        for (Point2d listCoord: coords){
            if(MinCoord.X()>listCoord.X())
                MinCoord=new Point2d(listCoord.X(),MinCoord.Y());
