@@ -31,7 +31,7 @@ public class Main {
             System.out.println("Hello World!");
         }
         try{LetterPlacer letterPlacer = new LetterPlacer();
-            letterPlacer.placeNext('H');
+            letterPlacer.placeNext('o');
             letterPlacer.placeNext('W');
             letterPlacer.placeNextln('W');
             letterPlacer.placeNext('l');

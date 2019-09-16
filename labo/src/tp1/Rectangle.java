@@ -6,7 +6,7 @@ import java.util.Set;
 public class Rectangle extends BaseShape {
     // TODO creer un rectangle avec une largeur et une longueur.
     public Rectangle(Double width, Double height) {
-        this(init(width, height));
+        super(init(width, height));
     }
 
     static private Set init(Double width, Double height) {
@@ -21,9 +21,7 @@ public class Rectangle extends BaseShape {
 
     // TODO creer un rectangle avec un point contenant la largeur et longueur.
     public Rectangle(Point2d dimensions) {
-         Set coords= new HashSet<Point2d>();
-          coords.add(dimensions);
-        new Rectangle(coords);
+         super(init(dimensions.X(),dimensions.Y()));
     }
 
     private Rectangle(Set<Point2d> coords) {

@@ -38,7 +38,8 @@ public final class LetterFactory {
 
     // TODO
     public static BaseShape create_o() {
-        return null;
+        BaseShape mainStripe = new Circle(halfMaxHeight);
+        return mainStripe;
     }
 
     // On vous donne la lettre W comme exemple.

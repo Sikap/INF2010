@@ -11,8 +11,11 @@ public class Ellipse extends BaseShape {
 
     static private Set<Point2d> init(Double widthRadius, Double heightRadius) {
         Set<Point2d> coords = new HashSet<Point2d>();
-        Point2d point = new Point2d(widthRadius,heightRadius);
-        Ge
+        for(double i=-widthRadius;i<widthRadius;i++)
+            for (double j=-heightRadius;j<heightRadius;j++){
+                if((Math.pow(i,2.0)/Math.pow(widthRadius,2.0))+(Math.pow(j,2.0)/Math.pow(heightRadius,2.0))<=1)
+                    coords.add(new Point2d(i,j));
+            }
         return coords;
     }
 
