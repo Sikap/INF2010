@@ -10,17 +10,17 @@ public final class LetterFactory {
     // TODO
     public static BaseShape create_H()
     {
-        /*Double degrees90 = Math.toRadians(90);
+        Double degrees90 = Math.toRadians(90);
         Double degrees0 = Math.toRadians(0);
         Double spacing = stripeThickness * 2;
         BaseShape mainStripe = new Rectangle(stripeThickness, maxHeight);
-        BaseShape leftStripe = mainStripe.rotate(degrees0).translate(new Point2d(-spacing, 0.0));
-        BaseShape middleStripe=mainStripe.rotate(degrees90).translate(new Point2d(-spacing, 0.0));
-        BaseShape rightStripe = mainStripe.rotate(degrees0).translate(new Point2d(spacing, 0.0));
+        BaseShape leftStripe = mainStripe.translate(new Point2d(-spacing, 0.0));
+        BaseShape middleStripe=mainStripe.rotate(degrees90).translate(new Point2d(0.0, halfMaxWidth));
+        BaseShape rightStripe = mainStripe.translate(new Point2d(spacing, 0.0));
         leftStripe.add(middleStripe);
         leftStripe.add(rightStripe);
-        return leftStripe;*/
-        return null;
+        return leftStripe;
+        //return null;
     }
 
     // TODO
@@ -29,7 +29,10 @@ public final class LetterFactory {
     }
 
     // TODO
-    public static BaseShape create_l() {
+    public static BaseShape create_l()
+    {
+        BaseShape mainStripe = new Rectangle(stripeThickness, maxHeight);
+
         return null;
     }
 

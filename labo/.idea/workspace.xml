@@ -87,7 +87,10 @@
       <workItem from="1568298508161" duration="2435000" />
       <workItem from="1568307467030" duration="1783000" />
       <workItem from="1568324289829" duration="3482000" />
-      <workItem from="1568394604478" duration="3543000" />
+      <workItem from="1568394604478" duration="4326000" />
+      <workItem from="1568590193993" duration="71000" />
+      <workItem from="1568649028570" duration="489000" />
+      <workItem from="1568650460841" duration="4381000" />
     </task>
     <task id="LOCAL-00001" summary="12/20">
       <created>1568233382934</created>
@@ -126,9 +129,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/tp1/PointOperator.java</url>
-          <line>17</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/tp1/LetterPlacer.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/tp1/Rectangle.java</url>
+          <line>15</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -136,6 +144,7 @@
       <configuration name="Application">
         <watch expression="tramslte" />
         <watch expression="test.X.value" />
+        <watch expression="leftStripe" />
       </configuration>
     </watches-manager>
   </component>
