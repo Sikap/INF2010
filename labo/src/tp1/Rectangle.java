@@ -6,25 +6,20 @@ import java.util.Set;
 public class Rectangle extends BaseShape {
     // TODO creer un rectangle avec une largeur et une longueur.
     public Rectangle(Double width, Double height) {
-        Set<Point2d> dimensions = new HashSet<Point2d>();
-        for(Double j=0.0;j<height;j++)
-            for(Double i=0.0;i<width;i++)
-            {
-                Point2d point = new Point2d(i,j);
-                dimensions.add(point);
-            }
-        new Rectangle(dimensions);
+       Point2d point = new Point2d(width,height);
+        Set coords= new HashSet<Point2d>();
+        coords.add(point);
+       new Rectangle(coords);
+
     }
 
     // TODO creer un rectangle avec un point contenant la largeur et longueur.
     public Rectangle(Point2d dimensions) {
-        Set<Point2d> coords =new HashSet<Point2d>();
-        for(Double i=0.0;i<dimensions.Y();i++)
-            for(Double j=0.0;j<dimensions.X();j++){
-                Point2d point = new Point2d(j,i);
-                coords.add(point);
-            }
+         Set coords= new HashSet<Point2d>();
+          coords.add(dimensions);
         new Rectangle(coords);
+
+
 
     }
 

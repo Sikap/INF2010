@@ -90,7 +90,7 @@
       <workItem from="1568394604478" duration="4326000" />
       <workItem from="1568590193993" duration="71000" />
       <workItem from="1568649028570" duration="489000" />
-      <workItem from="1568650460841" duration="6030000" />
+      <workItem from="1568650460841" duration="6477000" />
     </task>
     <task id="LOCAL-00001" summary="12/20">
       <created>1568233382934</created>
@@ -135,7 +135,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/tp1/Rectangle.java</url>
-          <line>15</line>
+          <line>13</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
