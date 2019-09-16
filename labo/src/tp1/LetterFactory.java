@@ -14,8 +14,9 @@ public final class LetterFactory {
         Double degrees0 = Math.toRadians(0);
         Double spacing = stripeThickness * 2;
         BaseShape mainStripe = new Rectangle(stripeThickness, maxHeight);
+        BaseShape middlStripe = new Rectangle(stripeThickness,spacing*2);
         BaseShape leftStripe = mainStripe.rotate(degrees0).translate(new Point2d(-spacing, 0.0));
-        BaseShape middleStripe=mainStripe.rotate(degrees90).translate(new Point2d(0.0, halfMaxWidth));
+        BaseShape middleStripe=middlStripe.rotate(degrees90).translate(new Point2d(spacing, maxWidth));
         BaseShape rightStripe = mainStripe.rotate(degrees0).translate(new Point2d(spacing, 0.0));
         leftStripe.add(middleStripe);
         leftStripe.add(rightStripe);
@@ -43,11 +44,11 @@ public final class LetterFactory {
     // On vous donne la lettre W comme exemple.
     public static BaseShape create_W() {
         Double degrees15 = Math.toRadians(8);
-        Double spacing = stripeThickness * 2;
+        Double spacing = stripeThickness * 2+30;
         BaseShape mainStripe = new Rectangle(stripeThickness, maxHeight);
         BaseShape leftStripe = mainStripe.rotate(-degrees15).translate(new Point2d(-spacing, 0.0));
-        BaseShape middleLeftStripe = mainStripe.rotate(degrees15).translate(new Point2d(-spacing / 3, 0.0));
-        BaseShape middleRightStripe = mainStripe.rotate(-degrees15).translate(new Point2d(spacing / 3, 0.0));
+        BaseShape middleLeftStripe = mainStripe.rotate(degrees15).translate(new Point2d(-spacing / 10, 0.0));
+        BaseShape middleRightStripe = mainStripe.rotate(-degrees15).translate(new Point2d(spacing / 10, 0.0));
         BaseShape rightStripe = mainStripe.rotate(degrees15).translate(new Point2d(spacing, 0.0));
         leftStripe.add(middleLeftStripe);
         leftStripe.add(middleRightStripe);

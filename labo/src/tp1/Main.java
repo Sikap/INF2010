@@ -31,8 +31,10 @@ public class Main {
             System.out.println("Hello World!");
         }
         try{LetterPlacer letterPlacer = new LetterPlacer();
+            letterPlacer.placeNext('H');
             letterPlacer.placeNext('W');
             letterPlacer.placeNextln('W');
+            letterPlacer.placeNext('l');
             File imgFile = letterPlacer.saveImage("w", false);
             Desktop dt = Desktop.getDesktop();
             dt.open(imgFile);
