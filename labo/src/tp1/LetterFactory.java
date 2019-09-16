@@ -20,7 +20,7 @@ public final class LetterFactory {
         leftStripe.add(middleStripe);
         leftStripe.add(rightStripe);
         return leftStripe;
-        //return null;
+
     }
 
     // TODO
