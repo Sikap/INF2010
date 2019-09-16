@@ -91,7 +91,7 @@
       <workItem from="1568394604478" duration="4326000" />
       <workItem from="1568590193993" duration="71000" />
       <workItem from="1568649028570" duration="489000" />
-      <workItem from="1568650460841" duration="13776000" />
+      <workItem from="1568650460841" duration="14202000" />
     </task>
     <task id="LOCAL-00001" summary="12/20">
       <created>1568233382934</created>
@@ -148,6 +148,11 @@
           <url>file://$PROJECT_DIR$/src/tests/ShapeTester.java</url>
           <line>66</line>
           <option name="timeStamp" value="17" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/tp1/Ellipse.java</url>
+          <line>8</line>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

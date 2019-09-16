@@ -39,6 +39,8 @@ public final class LetterFactory {
     // TODO
     public static BaseShape create_o() {
         BaseShape mainStripe = new Circle(halfMaxHeight);
+        BaseShape centreStripe= new Circle(halfMaxHeight*2/3);
+        mainStripe.removeAll(centreStripe.getCoords());
         return mainStripe;
     }
 
