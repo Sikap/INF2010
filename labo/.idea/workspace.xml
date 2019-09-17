@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="29d6b59f-290e-4d59-8e43-c370d8ce6720" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/labo/tp1/BaseShape.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/labo/tp1/BaseShape.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/labo/tp1/LetterFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/labo/tp1/LetterFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/BaseShape.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/BaseShape.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/labo/tp1/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/labo/tp1/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/LetterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/LetterFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/w.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/w.jpg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -91,7 +92,13 @@
       <workItem from="1568394604478" duration="4326000" />
       <workItem from="1568590193993" duration="71000" />
       <workItem from="1568649028570" duration="489000" />
+<<<<<<< HEAD
       <workItem from="1568650460841" duration="14473000" />
+=======
+      <workItem from="1568650460841" duration="14202000" />
+      <workItem from="1568679908217" duration="1406000" />
+      <workItem from="1568682323108" duration="19000" />
+>>>>>>> 9321f7b43e43bbe6a8e48a366f57041a2fd16466
     </task>
     <task id="LOCAL-00001" summary="12/20">
       <created>1568233382934</created>

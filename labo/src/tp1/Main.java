@@ -33,7 +33,7 @@ public class Main {
         try{LetterPlacer letterPlacer = new LetterPlacer();
             letterPlacer.placeNext('o');
             letterPlacer.placeNext('W');
-            letterPlacer.placeNextln('W');
+            letterPlacer.placeNextln('d');
             letterPlacer.placeNext('l');
             File imgFile = letterPlacer.saveImage("w", false);
             Desktop dt = Desktop.getDesktop();
