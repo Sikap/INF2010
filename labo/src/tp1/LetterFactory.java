@@ -66,6 +66,16 @@ public final class LetterFactory {
 
     // TODO
     public static BaseShape create_d() {
-        return null;
+
+        Double degrees0 = Math.toRadians(0);
+
+        BaseShape mainStripe = new Rectangle(stripeThickness, maxHeight);
+        BaseShape Circle = new Circle(halfMaxHeight/2);
+        BaseShape centreStripe= new Circle((halfMaxHeight/2)*2/3);
+        Circle.removeAll(centreStripe.getCoords());
+        Circle.rotate(degrees0).translate(new Point2d(0.0, halfMaxHeight*1000));
+        mainStripe.add(Circle);
+
+        return mainStripe;
     }
 }
