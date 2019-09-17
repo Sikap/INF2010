@@ -4,9 +4,7 @@
     <list default="true" id="29d6b59f-290e-4d59-8e43-c370d8ce6720" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/labo/tp1/LetterFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/labo/tp1/LetterFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/labo/tp1/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/labo/tp1/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/LetterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/LetterFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/w.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/w.jpg" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -94,7 +92,8 @@
       <workItem from="1568649028570" duration="489000" />
       <workItem from="1568650460841" duration="14202000" />
       <workItem from="1568679908217" duration="1406000" />
-      <workItem from="1568682323108" duration="19000" />
+      <workItem from="1568682323108" duration="119000" />
+      <workItem from="1568683652390" duration="310000" />
     </task>
     <task id="LOCAL-00001" summary="12/20">
       <created>1568233382934</created>
