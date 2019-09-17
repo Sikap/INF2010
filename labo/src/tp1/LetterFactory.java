@@ -73,8 +73,9 @@ public final class LetterFactory {
         BaseShape Circle = new Circle(halfMaxHeight/2);
         BaseShape centreStripe= new Circle((halfMaxHeight/2)*2/3);
         Circle.removeAll(centreStripe.getCoords());
-        Circle.rotate(degrees0).translate(new Point2d(0.0, halfMaxHeight*1000));
-        mainStripe.add(Circle);
+        //retourne dans un autre BaseShape les list de point
+        BaseShape cercleTranslate=Circle.translate(new Point2d(-20.0, 70.0));
+        mainStripe.add(cercleTranslate);
 
         return mainStripe;
     }
