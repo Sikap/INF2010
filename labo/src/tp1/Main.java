@@ -35,6 +35,7 @@ public class Main {
             letterPlacer.placeNext('W');
             letterPlacer.placeNextln('d');
             letterPlacer.placeNext('l');
+            letterPlacer.placeNext('e');
             File imgFile = letterPlacer.saveImage("w", false);
             Desktop dt = Desktop.getDesktop();
             dt.open(imgFile);

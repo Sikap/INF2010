@@ -26,20 +26,31 @@ public final class LetterFactory {
 
     // TODO
     public static BaseShape create_e() {
-        return null;
+        Double degrees90 = Math.toRadians(90);
+        Double hSpacing = stripeThickness * 4;
+        Double wSpacing =stripeThickness * 2;
+        BaseShape mainStripe = new Ellipse(wSpacing,hSpacing);
+        BaseShape centreStripe= new Ellipse(wSpacing,hSpacing*5/6);
+        BaseShape bare = new Rectangle(stripeThickness,hSpacing);
+        BaseShape morsoSurper= bare.translate(new Point2d(30.0,0.0));
+        mainStripe.removeAll(centreStripe.getCoords());
+        mainStripe.removeAll(morsoSurper.getCoords());
+        BaseShape Baremilieu =bare.rotate(degrees90).translate(new Point2d(wSpacing,-10.0));
+        mainStripe.add(Baremilieu);
+        return mainStripe;
     }
 
     // TODO
     public static BaseShape create_l()
     {
         BaseShape mainStripe = new Rectangle(stripeThickness, maxHeight);
-        return mainStripe;
+        return mainStripe.translate(new Point2d(10.0,0.0));
     }
 
     // TODO
     public static BaseShape create_o() {
-        BaseShape mainStripe = new Circle(halfMaxHeight);
-        BaseShape centreStripe= new Circle(halfMaxHeight*2/3);
+        BaseShape mainStripe = new Ellipse(halfMaxHeight/2,halfMaxHeight);
+        BaseShape centreStripe= new Ellipse(halfMaxHeight/3,halfMaxHeight*2/3);
         mainStripe.removeAll(centreStripe.getCoords());
         return mainStripe;
     }
@@ -56,7 +67,8 @@ public final class LetterFactory {
         leftStripe.add(middleLeftStripe);
         leftStripe.add(middleRightStripe);
         leftStripe.add(rightStripe);
-        return leftStripe;
+        BaseShape a= leftStripe.translate(new Point2d(0.0,-100.0));
+        return a;
     }
 
     // TODO
