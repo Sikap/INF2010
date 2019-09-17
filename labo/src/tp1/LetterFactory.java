@@ -73,7 +73,8 @@ public final class LetterFactory {
 
     // TODO
     public static BaseShape create_r() {
-        return null;
+        BaseShape mainStripe = new Rectangle(stripeThickness, maxHeight);
+        return mainStripe;
     }
 
     // TODO
