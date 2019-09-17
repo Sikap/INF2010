@@ -44,7 +44,7 @@ public final class LetterFactory {
     public static BaseShape create_l()
     {
         BaseShape mainStripe = new Rectangle(stripeThickness, maxHeight);
-        return mainStripe.translate(new Point2d(10.0,0.0));
+        return mainStripe;
     }
 
     // TODO
@@ -52,7 +52,8 @@ public final class LetterFactory {
         BaseShape mainStripe = new Ellipse(halfMaxHeight/2,halfMaxHeight);
         BaseShape centreStripe= new Ellipse(halfMaxHeight/3,halfMaxHeight*2/3);
         mainStripe.removeAll(centreStripe.getCoords());
-        return mainStripe;
+        BaseShape deplacerStripe=mainStripe.translate(new Point2d(0.0,100.0));
+        return deplacerStripe;
     }
 
     // On vous donne la lettre W comme exemple.
@@ -67,8 +68,8 @@ public final class LetterFactory {
         leftStripe.add(middleLeftStripe);
         leftStripe.add(middleRightStripe);
         leftStripe.add(rightStripe);
-        BaseShape a= leftStripe.translate(new Point2d(0.0,-100.0));
-        return a;
+        //BaseShape a= leftStripe.translate(new Point2d(0.0,-100.0));
+        return leftStripe;
     }
 
     // TODO
@@ -89,7 +90,7 @@ public final class LetterFactory {
         //retourne dans un autre BaseShape les list de point
         BaseShape cercleTranslate=Circle.translate(new Point2d(-40.0, 140.0));
         mainStripe.add(cercleTranslate);
-
-        return mainStripe;
+        BaseShape translateStripe=mainStripe.translate(new Point2d(40.0,0.0));
+        return translateStripe;
     }
 }

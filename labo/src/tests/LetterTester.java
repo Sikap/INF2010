@@ -33,7 +33,6 @@ public class LetterTester {
             String output = tesseract.doOCR(new File("all.jpg"))
                     .replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
             String input = "helloworld";
-            System.out.println(output);
             return findMatchingChars(output, input).doubleValue();
         } catch (Exception e) {
             e.printStackTrace();

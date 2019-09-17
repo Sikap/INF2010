@@ -30,19 +30,5 @@ public class Main {
         else {
             System.out.println("Hello World!");
         }
-        try{LetterPlacer letterPlacer = new LetterPlacer();
-            letterPlacer.placeNext('o');
-            letterPlacer.placeNext('W');
-            letterPlacer.placeNextln('d');
-            letterPlacer.placeNext('l');
-            letterPlacer.placeNext('e');
-            File imgFile = letterPlacer.saveImage("w", false);
-            Desktop dt = Desktop.getDesktop();
-            dt.open(imgFile);
-            System.out.println("Bravo!");
-        }catch (SystemException e){
-
-            System.out.println("Erreur");
-        }
     }
 }
