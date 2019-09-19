@@ -71,10 +71,7 @@ public class LinkedHashMap<KeyType, DataType> {
      * @return if key is already used in map
      */
     public boolean containsKey(KeyType key) {
-        if(map[getIndex(key)].equals(null)) {
-            return false;
-        }
-        return true;
+        return false;
     }
 
     /** TODO
@@ -92,7 +89,12 @@ public class LinkedHashMap<KeyType, DataType> {
      * @return Old DataType instance at key (null if none existed)
      */
     public DataType put(KeyType key, DataType value) {
-        return null;
+        //DataType Old_DataType =  map[getIndex(key)].next.data;
+        if(map[getIndex(key)].next==null);
+            map[getIndex(key)] =new Node(key,value);
+        else
+            mapPutNext(map[getIndex(key)].next,key,value);
+        return  Old_ DataType ;
     }
 
     /** TODO
