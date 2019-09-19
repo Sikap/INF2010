@@ -99,7 +99,10 @@ public class LinkedHashMap<KeyType, DataType> {
             return mapPutNext(map[getIndex(key)],key,value);
     }
     private DataType mapPutNext(Node node,KeyType key, DataType value){
-        if (node.data.equals(value)){
+        DataType tempData;
+        if (node.key.equals(key)){
+            tempData =(DataType) node.data;
+            node.data=value;
             return value;
         }
         if(node.next==null){
