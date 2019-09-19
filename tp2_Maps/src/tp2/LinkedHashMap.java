@@ -1,5 +1,7 @@
 package tp2;
 
+import java.util.Iterator;
+
 public class LinkedHashMap<KeyType, DataType> {
 
     private static final double COMPRESSION_FACTOR = 2; // 50%
@@ -90,11 +92,17 @@ public class LinkedHashMap<KeyType, DataType> {
      */
     public DataType put(KeyType key, DataType value) {
         //DataType Old_DataType =  map[getIndex(key)].next.data;
-        if(map[getIndex(key)].next==null);
-            map[getIndex(key)] =new Node(key,value);
-        else
-            mapPutNext(map[getIndex(key)].next,key,value);
-        return  Old_ DataType ;
+        for(int i=0;i<map.length;i++) {
+            if (map[getIndex(key)*i].next == null) {
+                map[getIndex(key)*i] = new Node(key, value);
+                return null;
+            }
+            if (map[getIndex(key)*i].next.data == value) {
+                return value;
+            }
+
+        }
+        return null;
     }
 
     /** TODO
@@ -103,7 +111,8 @@ public class LinkedHashMap<KeyType, DataType> {
      * @return Old DataType instance at key (null if none existed)
      */
     public DataType remove(KeyType key) {
-        return null;
+        if(map[getIndex(key)]==null){return null;}
+
     }
 
     /** TODO
