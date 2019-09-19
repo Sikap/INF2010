@@ -39,6 +39,15 @@ public class LinkedHashMap<KeyType, DataType> {
      * reassigns all contained values within the new map
      */
     private void rehash() {
+        Node<KeyType, DataType>[] Old_map= map;
+        map= new Node[capacity*CAPACITY_INCREASE_FACTOR];
+
+
+        for(int i=0;i<Old_map.length;i++){
+            if( Old_map[ i ] != null /*&& Old_map[ i ].isActive */)
+               map[i].next=Old_map[ i ];
+        }
+
     }
 
 
@@ -82,9 +91,23 @@ public class LinkedHashMap<KeyType, DataType> {
      * @return Old DataType instance at key (null if none existed)
      */
     public DataType put(KeyType key, DataType value) {
-        return null;
+        //DataType Old_DataType =  map[getIndex(key)].next.data;
+        if(map[getIndex(key)]==null){
+             map[getIndex(key)]=new Node(key,value);return null;
+        }
+        else
+            return mapPutNext(map[getIndex(key)],key,value);
     }
-
+    private DataType mapPutNext(Node node,KeyType key, DataType value){
+        if (node.data.equals(value)){
+            return value;
+        }
+        if(node.next==null){
+            node.next=new Node(key,value);
+            return (DataType) node.data;
+        }
+        return mapPutNext(node.next,key, value);
+    }
     /** TODO
      * Removes the node attached to a key
      * @param key Key which is contained in the node to remove
