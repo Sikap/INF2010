@@ -98,7 +98,9 @@ public class LinkedHashMap<KeyType, DataType> {
      * Removes all nodes contained within the map
      */
     public void clear() {
-
+        for(int i=0;i<capacity;i++){
+            map[i]=null;
+        }
     }
 
 
