@@ -3,9 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="29d6b59f-290e-4d59-8e43-c370d8ce6720" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/all.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/all.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/image.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/labo/tp1/LetterFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/labo/tp1/LetterFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/labo/tp1/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/labo/tp1/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp1/LetterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/LetterFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/w.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/w.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/w.jpg" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

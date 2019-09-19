@@ -37,7 +37,8 @@ public final class LetterFactory {
         mainStripe.removeAll(morsoSurper.getCoords());
         BaseShape Baremilieu =bare.rotate(degrees90).translate(new Point2d(wSpacing,-10.0));
         mainStripe.add(Baremilieu);
-        return mainStripe;
+        BaseShape e= mainStripe.translate(new Point2d(0.0,120.0));
+        return e;
     }
 
     // TODO
@@ -74,8 +75,19 @@ public final class LetterFactory {
 
     // TODO
     public static BaseShape create_r() {
+        Double degrees15 = Math.toRadians(25);
+        Double spacing = stripeThickness * 2+30;
         BaseShape mainStripe = new Rectangle(stripeThickness, maxHeight);
-        return mainStripe;
+        BaseShape leftStripe = new Rectangle(stripeThickness, (maxHeight)*2/3);
+        BaseShape Circle = new Circle(halfMaxHeight/2);
+        BaseShape centreStripe= new Circle((halfMaxHeight/2)*2/3);
+        Circle.removeAll(centreStripe.getCoords());
+        BaseShape cercleTranslate=Circle.translate(new Point2d(50.0, 45.0));
+        mainStripe.add(cercleTranslate);
+        BaseShape lefStripeTranslate= leftStripe.rotate(-degrees15).translate(new Point2d(spacing / 10, 80.0));
+        mainStripe.add(lefStripeTranslate);
+        BaseShape R= mainStripe.translate(new Point2d( -35.0, 0.0));
+        return R;
     }
 
     // TODO
