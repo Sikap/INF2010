@@ -41,8 +41,6 @@ public class LinkedHashMap<KeyType, DataType> {
     private void rehash() {
     }
 
-    private void addNode(Node<KeyType, DataType> newNode) {
-    }
 
     public int size() {
         return size;
@@ -71,6 +69,10 @@ public class LinkedHashMap<KeyType, DataType> {
      * @return DataType instance attached to key (null if not found)
      */
     public DataType get(KeyType key) {
+        for (int i=0;i<map.length;i++) {
+            if(map[i].key.equals(key))
+                return map[i].data;
+        }
         return null;
     }
 
