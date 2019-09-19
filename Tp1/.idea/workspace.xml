@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29d6b59f-290e-4d59-8e43-c370d8ce6720" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/all.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/all.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/image.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/image.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/labo/tp1/LetterFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/labo/tp1/LetterFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/labo/tp1/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/labo/tp1/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tp1/LetterFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp1/LetterFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/w.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/Tess4J.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/libraries/ejml.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../lab1.pdf" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -99,6 +99,7 @@
       <workItem from="1568683652390" duration="310000" />
       <workItem from="1568725508663" duration="3655000" />
       <workItem from="1568742338039" duration="247000" />
+      <workItem from="1568918174735" duration="39000" />
     </task>
     <task id="LOCAL-00001" summary="12/20">
       <created>1568233382934</created>

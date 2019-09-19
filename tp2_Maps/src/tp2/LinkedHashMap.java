@@ -39,6 +39,15 @@ public class LinkedHashMap<KeyType, DataType> {
      * reassigns all contained values within the new map
      */
     private void rehash() {
+        Node<KeyType, DataType>[] Old_map= map;
+        map= new Node[capacity*CAPACITY_INCREASE_FACTOR];
+
+
+        for(int i=0;i<Old_map.length;i++){
+            if( Old_map[ i ] != null /*&& Old_map[ i ].isActive */)
+               map[i].next=Old_map[ i ];
+        }
+
     }
 
     private void addNode(Node<KeyType, DataType> newNode) {
@@ -62,7 +71,10 @@ public class LinkedHashMap<KeyType, DataType> {
      * @return if key is already used in map
      */
     public boolean containsKey(KeyType key) {
-        return false;
+        if(map[getIndex(key)].equals(null)) {
+            return false;
+        }
+        return true;
     }
 
     /** TODO
