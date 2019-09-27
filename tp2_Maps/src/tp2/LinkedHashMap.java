@@ -84,7 +84,7 @@ public class LinkedHashMap<KeyType, DataType> {
             if( map[getIndex(key)]==null) {
                 return null;
             }
-        return map[getIndex(key)].data;
+        return mapGetNext(map[getIndex(key)],key);
     }
 
     /** TODO
@@ -99,26 +99,34 @@ public class LinkedHashMap<KeyType, DataType> {
             size++;
            return null;
         }
-        DataType Old_Data = map[getIndex(key)].data;
-        map[getIndex(key)] = new Node(key, value);
-        return Old_Data;
+        return  mapPutNext(map[getIndex(key)],key,value);
 
 
 
     }
-   /* private DataType mapPutNext(Node node,KeyType key, DataType value){
+    private DataType mapPutNext(Node node,KeyType key, DataType value){
         DataType tempData;
         if (node.key.equals(key)){
             tempData =(DataType) node.data;
             node.data=value;
-            return value;
+            return tempData;
         }
         if(node.next==null){
             node.next=new Node(key,value);
+            size++;
             return (DataType) node.data;
         }
-        return mapPutNext(node.next,key, value); }*/
-
+        return mapPutNext(node.next,key, value);
+    }
+    private DataType mapGetNext(Node node,KeyType key){
+        if (node.key.equals(key)){
+            return (DataType) node.data;
+        }
+        if(node.next==null){
+            return null;
+        }
+        return mapGetNext(node.next,key);
+    }
     /** TODO
      * Removes the node attached to a key
      * @param key Key which is contained in the node to remove
