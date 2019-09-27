@@ -147,6 +147,7 @@ public class LinkedHashMap<KeyType, DataType> {
         DataType Old_Data;
         if(node.key.equals(key)){
             Old_Data= (DataType) node.data;
+            size--;
             if(node.next==null){
                 map[getIndex(key)]=null;
                 return Old_Data;
@@ -160,6 +161,7 @@ public class LinkedHashMap<KeyType, DataType> {
             if(node.key.equals(key)){
                 Old_Data=(DataType) node.data;
                 nodeVieu.next=node.next;
+                size--;
                 return Old_Data;
             }
             nodeVieu=node;
