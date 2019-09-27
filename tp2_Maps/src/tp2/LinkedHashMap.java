@@ -69,7 +69,10 @@ public class LinkedHashMap<KeyType, DataType> {
      * @return if key is already used in map
      */
     public boolean containsKey(KeyType key) {
+        if(map[getIndex(key)]==null){
         return false;
+        }
+        return true;
     }
 
     /** TODO
@@ -78,11 +81,10 @@ public class LinkedHashMap<KeyType, DataType> {
      * @return DataType instance attached to key (null if not found)
      */
     public DataType get(KeyType key) {
-        for (int i=0;i<map.length;i++) {
-            if(map[i].key.equals(key))
-                return map[i].data;
-        }
-        return null;
+            if( map[getIndex(key)]==null) {
+                return null;
+            }
+        return map[getIndex(key)].data;
     }
 
     /** TODO
@@ -91,14 +93,20 @@ public class LinkedHashMap<KeyType, DataType> {
      * @return Old DataType instance at key (null if none existed)
      */
     public DataType put(KeyType key, DataType value) {
-        //DataType Old_DataType =  map[getIndex(key)].next.data;
-        if(map[getIndex(key)]==null){
-             map[getIndex(key)]=new Node(key,value);return null;
+        if (!containsKey(key))
+        {
+            map[getIndex(key)] = new Node(key, value);
+            size++;
+           return null;
         }
-        else
-            return mapPutNext(map[getIndex(key)],key,value);
+        DataType Old_Data = map[getIndex(key)].data;
+        map[getIndex(key)] = new Node(key, value);
+        return Old_Data;
+
+
+
     }
-    private DataType mapPutNext(Node node,KeyType key, DataType value){
+   /* private DataType mapPutNext(Node node,KeyType key, DataType value){
         DataType tempData;
         if (node.key.equals(key)){
             tempData =(DataType) node.data;
@@ -109,15 +117,23 @@ public class LinkedHashMap<KeyType, DataType> {
             node.next=new Node(key,value);
             return (DataType) node.data;
         }
-        return mapPutNext(node.next,key, value);
-    }
+        return mapPutNext(node.next,key, value); }*/
+
     /** TODO
      * Removes the node attached to a key
      * @param key Key which is contained in the node to remove
      * @return Old DataType instance at key (null if none existed)
      */
+
     public DataType remove(KeyType key) {
-        return null;
+        if(map[getIndex(key)]==null)
+        {
+           return null;
+        }
+        DataType Old_Data= map[getIndex(key)].data;
+        map[getIndex(key)]=null;
+        size=0;
+        return Old_Data;
     }
 
     /** TODO
