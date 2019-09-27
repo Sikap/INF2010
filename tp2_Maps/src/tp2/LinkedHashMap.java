@@ -72,9 +72,17 @@ public class LinkedHashMap<KeyType, DataType> {
         if(map[getIndex(key)]==null){
         return false;
         }
-        return true;
+        return mapContainsKeyNext(map[getIndex(key)],key);
     }
-
+    private boolean mapContainsKeyNext(Node node,KeyType key){
+        if (node.key.equals(key)){
+            return true;
+        }
+        if(node.next==null){
+            return false;
+        }
+        return mapContainsKeyNext(node.next,key);
+    }
     /** TODO
      * Finds the value attached to a key
      * @param key Key which we want to have its value
@@ -86,23 +94,28 @@ public class LinkedHashMap<KeyType, DataType> {
             }
         return mapGetNext(map[getIndex(key)],key);
     }
-
+    private DataType mapGetNext(Node node,KeyType key){
+        if (node.key.equals(key)){
+            return (DataType) node.data;
+        }
+        if(node.next==null){
+            return null;
+        }
+        return mapGetNext(node.next,key);
+    }
     /** TODO
      * Assigns a value to a key
      * @param key Key which will have its value assigned or reassigned
      * @return Old DataType instance at key (null if none existed)
      */
     public DataType put(KeyType key, DataType value) {
-        if (!containsKey(key))
+        if (map[getIndex(key)]==null)
         {
             map[getIndex(key)] = new Node(key, value);
             size++;
            return null;
         }
         return  mapPutNext(map[getIndex(key)],key,value);
-
-
-
     }
     private DataType mapPutNext(Node node,KeyType key, DataType value){
         DataType tempData;
@@ -118,15 +131,7 @@ public class LinkedHashMap<KeyType, DataType> {
         }
         return mapPutNext(node.next,key, value);
     }
-    private DataType mapGetNext(Node node,KeyType key){
-        if (node.key.equals(key)){
-            return (DataType) node.data;
-        }
-        if(node.next==null){
-            return null;
-        }
-        return mapGetNext(node.next,key);
-    }
+
     /** TODO
      * Removes the node attached to a key
      * @param key Key which is contained in the node to remove
