@@ -39,18 +39,25 @@ public class LinkedHashMap<KeyType, DataType> {
      * reassigns all contained values within the new map
      */
     private void rehash() {
+        if(!shouldRehash())
+            return;
         Node<KeyType, DataType>[] Old_map= map;
-        map= new Node[capacity*CAPACITY_INCREASE_FACTOR];
-
-
+        capacity*=CAPACITY_INCREASE_FACTOR;
+        map= new Node[capacity];
+        size=0;
         for(int i=0;i<Old_map.length;i++){
             if( Old_map[ i ] != null /*&& Old_map[ i ].isActive */)
-               map[i].next=Old_map[ i ];
+            mettreLesNodeDansUn9(Old_map[i]);
         }
-
+    return;
     }
-
-
+    private void mettreLesNodeDansUn9(Node node){
+        Node nodeNext=node.next;
+        put((KeyType) node.key,(DataType) node.data);
+        node.next=null;
+        if(nodeNext!=null)
+            mettreLesNodeDansUn9(nodeNext);
+    }
     public int size() {
         return size;
     }
@@ -109,6 +116,7 @@ public class LinkedHashMap<KeyType, DataType> {
      * @return Old DataType instance at key (null if none existed)
      */
     public DataType put(KeyType key, DataType value) {
+        rehash();
         if (map[getIndex(key)]==null)
         {
             map[getIndex(key)] = new Node(key, value);
