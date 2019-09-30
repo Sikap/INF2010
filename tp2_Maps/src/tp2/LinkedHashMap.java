@@ -39,17 +39,16 @@ public class LinkedHashMap<KeyType, DataType> {
      * reassigns all contained values within the new map
      */
     private void rehash() {
-        if(!shouldRehash())
+        if(!shouldRehash())//verifier si la compretion est infereur a %
             return;
         Node<KeyType, DataType>[] Old_map= map;
         capacity*=CAPACITY_INCREASE_FACTOR;
         map= new Node[capacity];
         size=0;
         for(int i=0;i<Old_map.length;i++){
-            if( Old_map[ i ] != null /*&& Old_map[ i ].isActive */)
-            mettreLesNodeDansUn9(Old_map[i]);
+            if( Old_map[ i ] != null)
+            mettreLesNodeDansUn9(Old_map[i]);//on vide l'ansien tableau pour le mettre dans le nouveau tableau
         }
-    return;
     }
     private void mettreLesNodeDansUn9(Node node){
         Node nodeNext=node.next;
