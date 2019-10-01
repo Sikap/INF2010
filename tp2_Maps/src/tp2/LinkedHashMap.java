@@ -44,18 +44,18 @@ public class LinkedHashMap<KeyType, DataType> {
         Node<KeyType, DataType>[] Old_map= map;
         capacity*=CAPACITY_INCREASE_FACTOR;
         map= new Node[capacity];
-        size=0;
+        size=0;//on remet a 0 car on va utilise pouche donc size sera a nouveau incremanter
         for(int i=0;i<Old_map.length;i++){
             if( Old_map[ i ] != null)
-            mettreLesNodeDansUn9(Old_map[i]);//on vide l'ansien tableau pour le mettre dans le nouveau tableau
+                mettreLesNodeDansUnNeuve(Old_map[i]);//on vide l'ansien tableau pour le mettre dans le nouveau tableau
         }
     }
-    private void mettreLesNodeDansUn9(Node node){
+    private void mettreLesNodeDansUnNeuve(Node node){
         Node nodeNext=node.next;
         put((KeyType) node.key,(DataType) node.data);
         node.next=null;
         if(nodeNext!=null)
-            mettreLesNodeDansUn9(nodeNext);
+            mettreLesNodeDansUnNeuve(nodeNext);
     }
     public int size() {
         return size;
