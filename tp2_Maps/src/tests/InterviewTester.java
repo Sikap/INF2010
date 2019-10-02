@@ -94,8 +94,9 @@ public class InterviewTester {
         Collection<MatchingPair> validMatchingPairs = new LinkedList<MatchingPair>();
         for (int i = 1; i <= n/2; ++i) validMatchingPairs.add(new MatchingPair(i, targetSum - i));
         validMatchingPairs.remove(new MatchingPair(targetSum/2,targetSum/2));
-
-        return matchingPairs.containsAll(validMatchingPairs) && validMatchingPairs.containsAll(matchingPairs);
+        boolean a =matchingPairs.containsAll(validMatchingPairs);
+        boolean b=validMatchingPairs.containsAll(matchingPairs);
+        return a && b;
     }
 
     public static boolean matchingPairsWithNegativeNumbers() {
