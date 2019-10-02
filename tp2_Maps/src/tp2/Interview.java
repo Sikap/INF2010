@@ -14,14 +14,20 @@ public class Interview {
      */
 
     public Collection<MatchingPair> matchingPairs(Collection<Integer> values, Integer targetSum){
-        Integer pivot =values.iterator().next();
+        Integer[] Values = values.toArray(new Integer[values.size()]);
+        LinkedHashMap Map = new LinkedHashMap(values.size());
+
         Set<MatchingPair> MatchingPairs= new HashSet<MatchingPair>() ;
-        for (Integer value : values) {
-                if(value<pivot){
 
-                }
+        for (int i=0;i<Values.length;i++)
+        {
+            Map.put(i,Values[i]);
+
         }
+        for (int i=0;i<Map.size();i++)
+        {
 
+        }
 
         return MatchingPairs;
 
