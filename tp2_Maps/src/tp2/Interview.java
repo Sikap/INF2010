@@ -3,7 +3,6 @@ package tp2;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Set;
 
 public class Interview {
     /**
@@ -14,17 +13,49 @@ public class Interview {
      */
 
     public Collection<MatchingPair> matchingPairs(Collection<Integer> values, Integer targetSum){
-        Integer pivot =values.iterator().next();
-        Set<MatchingPair> MatchingPairs= new HashSet<MatchingPair>() ;
-        for (Integer value : values) {
-                if(value<pivot){
+        Collection<MatchingPair> MatchingPairs= new HashSet<MatchingPair>() ;
+        if(values.size()==0) {
+            return MatchingPairs;
+        }
+        int i=0;
+        int sizeFile=values.size();
+        Collection<Integer> cfile1=new HashSet<>();
+        Collection<Integer> cfile2=new HashSet<>();
+        Integer[] file2 =new Integer[sizeFile] ;
+        MatchingPair temp,actuel;
+        Integer pivot,value1,value2;
+        Iterator itFile1
+        temp=actuel=null;
+        pivot=targetSum/2;
 
-                }
+
+        for (Integer value:values) {
+            if(value<pivot)
+            {
+                cfile1.add(value);
+            if(value>pivot)
+            {
+                file2[i++] = value;
+            }
+        }
+        for(i=sizeFile-1;i>=0;i--){
+            if(file2[i]!=null)
+            cfile2.add(file2[i]);
         }
 
-
+        while (i<sizeFile){
+            value1=file1[i];
+            i++;
+            value2=file2[sizeFile-i];
+            if(value1+value2==targetSum){
+                actuel=new MatchingPair(value1,value2);
+                if(temp!=null)
+                    if(!temp.equals(actuel))
+                        MatchingPairs.add(actuel);
+            }
+            temp=actuel;
+        }
         return MatchingPairs;
-
     }
 
 
