@@ -1,9 +1,9 @@
 package tp2;
 
-import sun.awt.SunHints;
-
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Interview {
     /**
@@ -20,13 +20,9 @@ public class Interview {
 
         for(int i=0;i<Values.length;i++)//Mettre les Values dans la map
         {
-
-            if(map.get(Values[i])==null)
-            {
                 map.put(Values[i], i);
-            }
-
         }
+
         for(int i=0;i<Values.length;i++)
         {
            if(map.get(targetSum-Values[i])!=null && map.get(targetSum-Values[i])!=i)
@@ -38,8 +34,6 @@ public class Interview {
             }
 
         }
-
-
         return Pairs;
     }
 
