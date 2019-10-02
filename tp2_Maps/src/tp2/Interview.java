@@ -1,8 +1,7 @@
 package tp2;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
 
 public class Interview {
     /**
@@ -13,34 +12,33 @@ public class Interview {
      */
 
     public Collection<MatchingPair> matchingPairs(Collection<Integer> values, Integer targetSum){
-        Collection<MatchingPair> MatchingPairs= new HashSet<MatchingPair>() ;
+        Collection<MatchingPair> MatchingPairs= new ArrayList<>() ;
         if(values.size()==0) {
             return MatchingPairs;
         }
-        int i=0;
+        int i,y;
         int sizeFile=values.size();
-        Collection<Integer> cfile1=new HashSet<>();
-        Collection<Integer> cfile2=new HashSet<>();
+       // Collection<Integer> cfile1=new HashSet<>();        Iterator itFile1,itFile2;
+        //Collection<Integer> cfile2=new HashSet<>();
+        Integer[] file1 =new Integer[sizeFile+1] ;
         Integer[] file2 =new Integer[sizeFile+1] ;
-        MatchingPair temp,actuel;
-        Integer pivot,value1,value2;
-        Iterator itFile1,itFile2;
-        temp=actuel=null;
-        pivot=targetSum;
-        Integer Dernier;
+        MatchingPair actuel;
+        Integer value1,value2;
+        i=y=0;
 
         for (Integer value:values) {
-            if(value<=pivot)
+            if(value>=0)
             {
-                Dernier=value;
-                cfile1.add(value);
+                file1[i]=value;
+                i++;
             }
-            if(value>=pivot)
-            {
-                file2[i++] = value;
+            else{
+                file2[y]=value;y++;
             }
+
+
         }
-        sizeFile=cfile1.size();
+
        /* for(i=sizeFile-1;i>=0;i--){
             if(file2[i]!=null)
             cfile2.add(file2[i]);
@@ -49,23 +47,31 @@ public class Interview {
        /* if(cfile1.size()!=cfile2.size())
             return MatchingPairs;*/
 
-        itFile1=cfile1.iterator();
+        //itFile1=cfile1.iterator();
         //itFile2=cfile2.iterator();
+        i=0;
+        y=0;
+        while(i<sizeFile){
+            if(file1[i]==null)break;
+            value1=file1[i];
+            if (file2[y]!=null) {
+                value2=file2[y];
+            }else if(file1[y]!=null) value2=file1[y];else{value2=0;}
 
-        while (itFile1.hasNext()){
-            value1=(Integer) itFile1.next();
-            sizeFile--;
-            if(file2[sizeFile]!=null)
-            value2=file2[sizeFile];
-            else value2=0;
-            if(value1+value2>=targetSum){
-                if (value1!=value2){
-                    actuel=new MatchingPair(value1,value2);
-                    if(!actuel.equals(temp))
-                        MatchingPairs.add(actuel);
+            if(value2+value1<=targetSum)
+                if(y==sizeFile-1){y=0;i++;}else y++;
+            if(value2+value1>targetSum)
+            {
+                i++;
+                y=0;
+            }
+            if(value1>value2){
+                if((value1+value2)==targetSum){
+                    if (value1!=value2){
+                        MatchingPairs.add(new MatchingPair(value2,value1));
+                    }
                 }
             }
-            temp=actuel;
         }
         return MatchingPairs;
     }
