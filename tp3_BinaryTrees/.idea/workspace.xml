@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a63b7068-f962-4dac-8811-a6525895809e" name="Default Changelist" comment="" />
+    <list default="true" id="a63b7068-f962-4dac-8811-a6525895809e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tests/AvlTreeTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tests/AvlTreeTester.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tests/Corrector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tests/Corrector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree$BinaryNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree$BinaryNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tp3/AvlTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp3/AvlTree.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,7 +34,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tp3_BinaryTrees_Correction" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -34,6 +44,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -80,6 +91,7 @@
       <workItem from="1570121599871" duration="35000" />
       <workItem from="1570123282414" duration="194000" />
       <workItem from="1570127155799" duration="2679000" />
+      <workItem from="1570130329771" duration="62000" />
     </task>
     <servers />
   </component>

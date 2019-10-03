@@ -180,7 +180,10 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return if value already exists in the root tree
      */
     private boolean contains(ValueType value, BinaryNode<ValueType> currentNode){
-
+        if(currentNode!=null && currentNode.value==value)
+        {
+                return  true;
+        }
         return false;
     }
 
