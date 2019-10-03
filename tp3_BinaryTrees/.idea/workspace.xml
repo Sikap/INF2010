@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a63b7068-f962-4dac-8811-a6525895809e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tests/AvlTreeTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tests/AvlTreeTester.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tests/Corrector.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tests/Corrector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree$BinaryNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree$BinaryNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp3/AvlTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp3/AvlTree.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -91,8 +85,16 @@
       <workItem from="1570121599871" duration="35000" />
       <workItem from="1570123282414" duration="194000" />
       <workItem from="1570127155799" duration="2679000" />
-      <workItem from="1570130329771" duration="62000" />
+      <workItem from="1570130329771" duration="1656000" />
     </task>
+    <task id="LOCAL-00001" summary="Contains">
+      <created>1570130500312</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1570130500312</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,13 +113,20 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Contains" />
+    <option name="LAST_COMMIT_MESSAGE" value="Contains" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
+        <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/tests/AvlTreeTester.java</url>
-          <line>85</line>
-          <option name="timeStamp" value="64" />
+          <line>39</line>
+          <properties class="tests.AvlTreeTester" method="contains">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="66" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

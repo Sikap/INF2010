@@ -100,12 +100,12 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
             return resulta;
         }
         if(currentNode.value.compareTo(value)==1){
-            if(currentNode.right==null){
-                currentNode.right= new BinaryNode<ValueType>(value,currentNode);
+            if(currentNode.left==null){
+                currentNode.left= new BinaryNode<ValueType>(value,currentNode);
                 return true;
             }
             else {
-                resulta= insert(value,currentNode.right);
+                resulta= insert(value,currentNode.left);
             }
         }
         else {
@@ -180,11 +180,17 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return if value already exists in the root tree
      */
     private boolean contains(ValueType value, BinaryNode<ValueType> currentNode){
-        if(currentNode!=null && currentNode.value==value)
+        if(currentNode==null) return false;
+        if( currentNode.value==value)
         {
                 return  true;
         }
-        return false;
+        if(currentNode.value.compareTo(value)==1){
+            return contains(value,currentNode.left);
+        }
+        else{
+            return contains(value,currentNode.right);
+        }
     }
 
     /** TODO O( n )
