@@ -128,7 +128,28 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return if parent node should balance
      */
     private boolean remove(ValueType value, BinaryNode<ValueType> currentNode) {
-        if(value==currentNode.value){}
+        if(value==currentNode.value){
+            currentNode.value=null;
+            return  true;
+        }
+        if(currentNode.value.compareTo(value)==1){
+            if(currentNode.left.value.compareTo(value)==0){
+                currentNode.left= null;
+                return true;
+            }
+            else {
+                remove(value,currentNode.left);
+            }
+        }
+        else {
+            if(currentNode.right.value.compareTo(value)==0){
+                currentNode.right= null;
+                return true;
+            }
+            else {
+                remove(value,currentNode.right);
+            }
+        }
 
         return false;
     }
@@ -180,7 +201,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return if value already exists in the root tree
      */
     private boolean contains(ValueType value, BinaryNode<ValueType> currentNode){
-        if(currentNode==null) return false;
+        if(currentNode==null||currentNode.value==null) return false;
         if( currentNode.value==value)
         {
                 return  true;
@@ -191,6 +212,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         else{
             return contains(value,currentNode.right);
         }
+
     }
 
     /** TODO O( n )
@@ -206,7 +228,8 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return Node which has the minimal value contained in our root tree
      */
     private BinaryNode<ValueType> findMin(BinaryNode<ValueType> currentNode) {
-        return null;
+       return currentNode;
+
     }
 
     /** TODO O( n )
