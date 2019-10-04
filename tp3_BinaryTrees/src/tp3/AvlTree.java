@@ -36,7 +36,6 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return if value already exists in the tree
      */
     public boolean contains(ValueType value) {
-
         return contains(value, root);
     }
 
@@ -45,7 +44,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return Max level contained in our root tree
      */
     public int getHeight() {
-        return getMaxDegree(root) - 1;
+        return getLevelCount(root) - 1;
     }
 
     /**
@@ -128,38 +127,24 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return if parent node should balance
      */
     private boolean remove(ValueType value, BinaryNode<ValueType> currentNode) {
-        if(value==currentNode.value){
+        if(value==currentNode.value){//ne regade pas si il y a des enfants a verifier
             currentNode.value=null;
             return  true;
         }
         if(currentNode.value.compareTo(value)==1){
-            if(currentNode.left.value.compareTo(value)==0){
-                currentNode.left= null;
-                return true;
-            }
-            else {
-                remove(value,currentNode.left);
-            }
+            remove(value,currentNode.left);
         }
         else {
-            if(currentNode.right.value.compareTo(value)==0){
-                currentNode.right= null;
-                return true;
-            }
-            else {
-                remove(value,currentNode.right);
-            }
+            remove(value,currentNode.right);
         }
-
         return false;
     }
 
-    /** TODO O( 1 )
+    /** TODO O( n )
      * Balances the subTree
      * @param subTree SubTree currently being accessed to verify if it respects the AVL balancing rule
      */
     private void balance(BinaryNode<ValueType> subTree) {
-
     }
 
     /** TODO O( 1 )
@@ -167,7 +152,6 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @param node1 Node to become child of its left child
      */
     private void rotateLeft(BinaryNode<ValueType> node1){
-
     }
 
     /** TODO O( 1 )
@@ -175,7 +159,6 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @param node1 Node to become child of its right child
      */
     private void rotateRight(BinaryNode<ValueType> node1){
-
     }
 
     /** TODO O( 1 )
@@ -183,7 +166,6 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @param node1 Node to become child of the right child of its left child
      */
     private void doubleRotateOnLeftChild(BinaryNode<ValueType> node1){
-
     }
 
     /** TODO O( 1 )
@@ -191,7 +173,6 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @param node1 Node to become child of the left child of its right child
      */
     private void doubleRotateOnRightChild(BinaryNode<ValueType> node1){
-
     }
 
     /** TODO O( log n )
@@ -202,9 +183,8 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      */
     private boolean contains(ValueType value, BinaryNode<ValueType> currentNode){
         if(currentNode==null||currentNode.value==null) return false;
-        if( currentNode.value==value)
-        {
-                return  true;
+        if( currentNode.value==value){
+            return  true;
         }
         if(currentNode.value.compareTo(value)==1){
             return contains(value,currentNode.left);
@@ -212,14 +192,13 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         else{
             return contains(value,currentNode.right);
         }
-
     }
 
     /** TODO O( n )
      * Returns the number of level contained in subTree including subTree node level
      * @return Number of level contained in subTree including subTree node level
      */
-    private int getMaxDegree(BinaryNode<ValueType> subTree){
+    private int getLevelCount(BinaryNode<ValueType> subTree){
         return 0;
     }
 
@@ -228,8 +207,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return Node which has the minimal value contained in our root tree
      */
     private BinaryNode<ValueType> findMin(BinaryNode<ValueType> currentNode) {
-       return currentNode;
-
+        return null;
     }
 
     /** TODO O( n )

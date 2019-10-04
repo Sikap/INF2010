@@ -2,6 +2,7 @@ package tests;
 
 import tp3.AvlTree;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -24,6 +25,7 @@ public class AvlTreeTester {
         subTotal += Corrector.executeUnitTest("infixOrder", AvlTreeTester::infixOrder, 0.5);
         subTotal += Corrector.executeUnitTest("levelOrder", AvlTreeTester::levelOrder, 1.0);
 
+        // Rotations do not need to be implemented until these tests
         subTotal += Corrector.executeUnitTest("rotateLeftPerfectCase", AvlTreeTester::rotateLeftPerfectCase, 2.0);
         subTotal += Corrector.executeUnitTest("rotateRightPerfectCase", AvlTreeTester::rotateRightPerfectCase, 0.5);
 
@@ -160,7 +162,7 @@ public class AvlTreeTester {
 
         List<Integer> result = tree.levelOrder();
 
-        List<Integer> levelOrderedList = List.of(3, 1, 5, 0, 2, 4, 6);
+        List<Integer> levelOrderedList = Arrays.asList(3, 1, 5, 0, 2, 4, 6);
 
         return result.equals(levelOrderedList);
     }
