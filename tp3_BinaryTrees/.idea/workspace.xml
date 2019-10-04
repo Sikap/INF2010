@@ -87,7 +87,7 @@
       <workItem from="1570123282414" duration="194000" />
       <workItem from="1570127155799" duration="2679000" />
       <workItem from="1570130329771" duration="8804000" />
-      <workItem from="1570217276662" duration="1477000" />
+      <workItem from="1570217276662" duration="2838000" />
     </task>
     <task id="LOCAL-00001" summary="Contains">
       <created>1570130500312</created>
@@ -122,18 +122,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/tests/AvlTreeTester.java</url>
-          <line>100</line>
-          <properties class="tests.AvlTreeTester" method="findMin">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/tests/AvlTreeTester.java</url>
-          <line>107</line>
-          <option name="timeStamp" value="72" />
+          <line>105</line>
+          <option name="timeStamp" value="74" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

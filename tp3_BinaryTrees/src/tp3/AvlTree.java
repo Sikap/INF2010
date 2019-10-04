@@ -207,7 +207,12 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return Node which has the minimal value contained in our root tree
      */
     private BinaryNode<ValueType> findMin(BinaryNode<ValueType> currentNode) {
-        return null;
+        if(currentNode==null){
+            return null;
+        }
+        if(currentNode.left==null)
+            return currentNode;
+        return findMin(currentNode.left);
     }
 
     /** TODO O( n )
