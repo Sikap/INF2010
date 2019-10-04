@@ -199,7 +199,11 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return Number of level contained in subTree including subTree node level
      */
     private int getLevelCount(BinaryNode<ValueType> subTree){
-        return 0;
+        int left,right;
+        if(subTree==null){return 0;}
+        left=getLevelCount(subTree.left);
+        right=getLevelCount(subTree.right);
+        return (left>right)?left+1:right+1;
     }
 
     /** TODO O( log n )
