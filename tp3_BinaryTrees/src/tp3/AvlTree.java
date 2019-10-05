@@ -225,6 +225,12 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @param items List being modified to contain all values in the root tree in ascending order
      */
     private void infixOrder(BinaryNode<ValueType> currentNode, List<ValueType> items){
+        if(currentNode==null)return;
+        if(currentNode.left!=null)
+            infixOrder(currentNode.left,items);
+        items.add(currentNode.value);
+        if(currentNode.right!=null)
+            infixOrder(currentNode.right,items);
     }
 
     /** TODO O( n )
