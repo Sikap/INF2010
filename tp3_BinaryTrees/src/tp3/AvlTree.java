@@ -239,6 +239,14 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @param items List being modified to contain all values in the root tree in level order from top to bottom
      */
     private void levelOrder(ArrayDeque<BinaryNode<ValueType>> nodesToCheck, List<ValueType> items) {
+        BinaryNode<ValueType> binaryNode=nodesToCheck.pop();
+        if(binaryNode.left!=null)
+            nodesToCheck.add(binaryNode.left);
+        if(binaryNode.right!=null)
+            nodesToCheck.add(binaryNode.right);
+        items.add(binaryNode.value);
+        if(nodesToCheck.size()==0)return;
+        levelOrder(nodesToCheck,items);
     }
     
     static class BinaryNode<ValueType> {

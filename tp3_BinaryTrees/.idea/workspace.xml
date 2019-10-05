@@ -88,7 +88,7 @@
       <workItem from="1570127155799" duration="2679000" />
       <workItem from="1570130329771" duration="8804000" />
       <workItem from="1570217276662" duration="5047000" />
-      <workItem from="1570286513733" duration="6317000" />
+      <workItem from="1570286513733" duration="10505000" />
     </task>
     <task id="LOCAL-00001" summary="Contains">
       <created>1570130500312</created>
@@ -124,9 +124,9 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/tests/AvlTreeTester.java</url>
-          <line>105</line>
-          <option name="timeStamp" value="74" />
+          <url>file://$PROJECT_DIR$/src/tp3/AvlTree.java</url>
+          <line>241</line>
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
