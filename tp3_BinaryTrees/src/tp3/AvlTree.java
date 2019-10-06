@@ -133,6 +133,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
     private boolean remove(ValueType value, BinaryNode<ValueType> currentNode) {
         if(value==currentNode.value){//ne regade pas si il y a des enfants a verifier
             currentNode.value=null;
+            balance(this.root);
             return  true;
         }
         if(currentNode.value.compareTo(value)==1){
@@ -217,11 +218,11 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return Number of level contained in subTree including subTree node level
      */
     private int getLevelCount(BinaryNode<ValueType> subTree){
-        int left,right,level,levelR;
-        if(subTree==null){return 0;}
+        int left,right;
+        if(subTree==null||subTree.value==null){return 0;}
         left=getLevelCount(subTree.left);
         right=getLevelCount(subTree.right);
-        return   (left>right)?left+1:right+1;
+        return  (left>right)?left+1:right+1;
 
     }
 

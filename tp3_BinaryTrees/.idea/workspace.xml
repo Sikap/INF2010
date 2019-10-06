@@ -88,7 +88,7 @@
       <workItem from="1570127155799" duration="2679000" />
       <workItem from="1570130329771" duration="9096000" />
       <workItem from="1570325909938" duration="275000" />
-      <workItem from="1570385320579" duration="10977000" />
+      <workItem from="1570385320579" duration="13063000" />
     </task>
     <task id="LOCAL-00001" summary="Contains">
       <created>1570130500312</created>
@@ -125,13 +125,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/tests/AvlTreeTester.java</url>
-          <line>169</line>
-          <properties class="tests.AvlTreeTester" method="rotateRightPerfectCase">
+          <line>251</line>
+          <properties class="tests.AvlTreeTester" method="removeBalances">
             <option name="EMULATED" value="true" />
           </properties>
-          <option name="timeStamp" value="75" />
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/tp3_BinaryTrees$Main.ic" NAME="Main Coverage Results" MODIFIED="1570397384905" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
