@@ -44,6 +44,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return Max level contained in our root tree
      */
     public int getHeight() {
+
         return getLevelCount(root) - 1;
     }
 
@@ -199,11 +200,16 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return Number of level contained in subTree including subTree node level
      */
     private int getLevelCount(BinaryNode<ValueType> subTree){
-        int left,right;
+        int left,right,level,levelR;
         if(subTree==null){return 0;}
         left=getLevelCount(subTree.left);
         right=getLevelCount(subTree.right);
-        return (left>right)?left+1:right+1;
+        level=(left>right)?left+1:right+1;
+        if(subTree.parent==null) {
+            return level-1;
+        }
+        return level;
+
     }
 
     /** TODO O( log n )
