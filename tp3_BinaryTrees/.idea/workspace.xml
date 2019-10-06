@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a63b7068-f962-4dac-8811-a6525895809e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tests/AvlTreeTester.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tests/AvlTreeTester.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree$BinaryNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree$BinaryNode.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/tp3/AvlTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tp3/AvlTree.java" afterDir="false" />
@@ -90,7 +88,7 @@
       <workItem from="1570127155799" duration="2679000" />
       <workItem from="1570130329771" duration="9096000" />
       <workItem from="1570325909938" duration="275000" />
-      <workItem from="1570385320579" duration="6739000" />
+      <workItem from="1570385320579" duration="10977000" />
     </task>
     <task id="LOCAL-00001" summary="Contains">
       <created>1570130500312</created>
@@ -127,11 +125,11 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/tests/AvlTreeTester.java</url>
-          <line>251</line>
-          <properties class="tests.AvlTreeTester" method="removeBalances">
+          <line>169</line>
+          <properties class="tests.AvlTreeTester" method="rotateRightPerfectCase">
             <option name="EMULATED" value="true" />
           </properties>
-          <option name="timeStamp" value="74" />
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

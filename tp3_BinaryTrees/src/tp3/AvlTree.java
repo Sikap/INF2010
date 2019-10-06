@@ -102,6 +102,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         if(currentNode.value.compareTo(value)==1){
             if(currentNode.left==null){
                 currentNode.left= new BinaryNode<ValueType>(value,currentNode);
+                balance(this.root);
                 return true;
             }
             else {
@@ -111,10 +112,12 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         else {
             if(currentNode.right==null){
                 currentNode.right= new BinaryNode<ValueType>(value,currentNode);
+                balance(this.root);
                 return true;
             }
             else {
                 resulta= insert(value,currentNode.right);
+
             }
         }
         return resulta;
@@ -146,6 +149,12 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @param subTree SubTree currently being accessed to verify if it respects the AVL balancing rule
      */
     private void balance(BinaryNode<ValueType> subTree) {
+        if(getHeight()>getLevelCount(subTree.right)+1){
+            rotateLeft(subTree.left);
+        }
+        if(getHeight()>getLevelCount(subTree.left)+1){
+            rotateRight(subTree.right);
+        }
     }
 
     /** TODO O( 1 )
@@ -153,6 +162,10 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @param node1 Node to become child of its left child
      */
     private void rotateLeft(BinaryNode<ValueType> node1){
+        BinaryNode<ValueType> OLD_parent=node1.parent;
+        node1.parent=null;
+        node1.right= new  BinaryNode<ValueType>(OLD_parent.value,node1);
+        this.root=node1;
     }
 
     /** TODO O( 1 )
@@ -160,6 +173,10 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @param node1 Node to become child of its right child
      */
     private void rotateRight(BinaryNode<ValueType> node1){
+        BinaryNode<ValueType> OLD_parent=node1.parent;
+        node1.parent=null;
+        node1.left= new  BinaryNode<ValueType>(OLD_parent.value,node1);
+        this.root=node1;
     }
 
     /** TODO O( 1 )
@@ -204,11 +221,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         if(subTree==null){return 0;}
         left=getLevelCount(subTree.left);
         right=getLevelCount(subTree.right);
-        level=(left>right)?left+1:right+1;
-        if(subTree.parent==null) {
-            return level-1;
-        }
-        return level;
+        return   (left>right)?left+1:right+1;
 
     }
 
