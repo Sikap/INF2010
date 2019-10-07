@@ -156,7 +156,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         return removeReussi;
     }
     private void socuperDesEnfant(BinaryNode<ValueType> currentNode){
-        
+
     }
     /** TODO O( n )
      * Balances the subTree
@@ -194,7 +194,6 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         node1.parent=newTop;
         node1.left=null;
         newTop.right=node1;
-
     }
 
     /** TODO O( 1 )
