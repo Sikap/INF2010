@@ -133,20 +133,31 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return if parent node should balance
      */
     private boolean remove(ValueType value, BinaryNode<ValueType> currentNode) {
+        boolean removeReussi=false;
         if(value==currentNode.value){//ne regade pas si il y a des enfants a verifier
+            if(currentNode.left!=null||currentNode.right!=null)
+                socuperDesEnfant(currentNode);
             currentNode.value=null;
-            balance(this.root);
+            currentNode.parent=null;
             return  true;
         }
         if(currentNode.value.compareTo(value)==1){
-            remove(value,currentNode.left);
+            removeReussi= remove(value,currentNode.left);
+            if(removeReussi&&currentNode.left.value==null)
+                currentNode.left=null;
         }
         else {
-            remove(value,currentNode.right);
+            removeReussi= remove(value, currentNode.right);
+            if(removeReussi&&currentNode.right.value==null)
+                currentNode.right=null;
         }
-        return false;
+        if(removeReussi)
+            balance(currentNode);
+        return removeReussi;
     }
-
+    private void socuperDesEnfant(BinaryNode<ValueType> currentNode){
+        
+    }
     /** TODO O( n )
      * Balances the subTree
      * @param subTree SubTree currently being accessed to verify if it respects the AVL balancing rule

@@ -91,7 +91,7 @@
       <workItem from="1570203233157" duration="1008000" />
       <workItem from="1570204253997" duration="911000" />
       <workItem from="1570456514349" duration="494000" />
-      <workItem from="1570459232129" duration="2865000" />
+      <workItem from="1570459232129" duration="5375000" />
     </task>
     <servers />
   </component>
@@ -116,16 +116,16 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/tp3/AvlTree.java</url>
-          <line>242</line>
+          <line>253</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/tp3/AvlTree.java</url>
-          <line>45</line>
-          <properties class="tp3.AvlTree" method="getHeight">
+          <url>file://$PROJECT_DIR$/src/tests/AvlTreeTester.java</url>
+          <line>251</line>
+          <properties class="tests.AvlTreeTester" method="removeBalances">
             <option name="EMULATED" value="true" />
           </properties>
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
