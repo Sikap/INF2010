@@ -120,6 +120,8 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
 
             }
         }
+        if(resulta)
+            balance(currentNode);
         return resulta;
     }
 
@@ -150,12 +152,22 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @param subTree SubTree currently being accessed to verify if it respects the AVL balancing rule
      */
     private void balance(BinaryNode<ValueType> subTree) {
-        if(getHeight()>getLevelCount(subTree.right)+1){
+
+        int iLeft,iRight;
+        iLeft=getLevelCount(subTree.left);
+        iRight=getLevelCount(subTree.right);
+        if(iLeft>iRight+1&&iRight==0){
+            rotateLeft(subTree);
+        }
+        else if(iRight>iLeft+1&&iLeft==0){
+            rotateRight(subTree);}
+
+       /* if(getHeight()>getLevelCount(subTree.right)+1){
             rotateLeft(subTree.left);
         }
         if(getHeight()>getLevelCount(subTree.left)+1){
             rotateRight(subTree.right);
-        }
+        }*/
     }
 
     /** TODO O( 1 )
@@ -164,9 +176,14 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      */
     private void rotateLeft(BinaryNode<ValueType> node1){
         BinaryNode<ValueType> OLD_parent=node1.parent;
-        node1.parent=null;
-        node1.right= new  BinaryNode<ValueType>(OLD_parent.value,node1);
-        this.root=node1;
+        BinaryNode<ValueType> newTop=node1.left;
+        newTop.parent=OLD_parent;
+        if(this.root.equals(node1))
+            this.root=newTop;
+        node1.parent=newTop;
+        node1.left=null;
+        newTop.right=node1;
+
     }
 
     /** TODO O( 1 )
@@ -175,9 +192,14 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      */
     private void rotateRight(BinaryNode<ValueType> node1){
         BinaryNode<ValueType> OLD_parent=node1.parent;
-        node1.parent=null;
-        node1.left= new  BinaryNode<ValueType>(OLD_parent.value,node1);
-        this.root=node1;
+        BinaryNode<ValueType> newTop=node1.right;
+        newTop.parent=OLD_parent;
+        if(this.root.equals(node1))
+            this.root=newTop;
+        node1.parent=newTop;
+        node1.right=null;
+        newTop.left=node1;
+
     }
 
     /** TODO O( 1 )
