@@ -151,8 +151,10 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
             if(removeReussi&&currentNode.right.value==null)
                 currentNode.right=null;
         }
-        if(removeReussi)
+        if(removeReussi){
             balance(currentNode);
+            return false;
+        }
         return removeReussi;
     }
     private void socuperDesEnfant(BinaryNode<ValueType> currentNode){
@@ -164,21 +166,26 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      */
     private void balance(BinaryNode<ValueType> subTree) {
 
-        int iLeft,iRight;
+        int iLeft,iRight,typeRotate=0;
         iLeft=getLevelCount(subTree.left);
         iRight=getLevelCount(subTree.right);
-        if(iLeft>iRight+1&&iRight==0){
-            rotateLeft(subTree);
-        }
-        else if(iRight>iLeft+1&&iLeft==0){
-            rotateRight(subTree);}
+        while (subTree!=null){
 
-       /* if(getHeight()>getLevelCount(subTree.right)+1){
-            rotateLeft(subTree.left);
         }
-        if(getHeight()>getLevelCount(subTree.left)+1){
-            rotateRight(subTree.right);
-        }*/
+        switch (typeRotate){
+            case 0:
+                rotateLeft(subTree);
+                break;
+            case 1:
+                rotateRight(subTree);
+                break;
+            case 2:
+                doubleRotateOnLeftChild(subTree);
+                break;
+            case 3:
+                doubleRotateOnRightChild(subTree);
+                break;
+        }
     }
 
     /** TODO O( 1 )
@@ -188,11 +195,13 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
     private void rotateLeft(BinaryNode<ValueType> node1){
         BinaryNode<ValueType> OLD_parent=node1.parent;
         BinaryNode<ValueType> newTop=node1.left;
+        BinaryNode<ValueType> newRight=node1.left.right;
         newTop.parent=OLD_parent;
         if(this.root.equals(node1))
             this.root=newTop;
         node1.parent=newTop;
         node1.left=null;
+        node1.right=newRight;
         newTop.right=node1;
     }
 
@@ -203,10 +212,12 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
     private void rotateRight(BinaryNode<ValueType> node1){
         BinaryNode<ValueType> OLD_parent=node1.parent;
         BinaryNode<ValueType> newTop=node1.right;
+        BinaryNode<ValueType> newleft=node1.right.left;
         newTop.parent=OLD_parent;
         if(this.root.equals(node1))
             this.root=newTop;
         node1.parent=newTop;
+        node1.left=newleft;
         node1.right=null;
         newTop.left=node1;
 
