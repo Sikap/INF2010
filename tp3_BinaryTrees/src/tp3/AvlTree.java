@@ -95,15 +95,14 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return if parent node should balance
      */
     private boolean insert (ValueType value, BinaryNode<ValueType> currentNode){
-        boolean resulta= false;
+        boolean resulta= true;
         if(value==currentNode.value){
-            return resulta;
+            return false;
         }
         if(currentNode.value.compareTo(value)==1){
             if(currentNode.left==null){
                 currentNode.left= new BinaryNode<ValueType>(value,currentNode);
-                balance(this.root);
-                return true;
+                resulta= true;
             }
             else {
                 resulta= insert(value,currentNode.left);
@@ -112,17 +111,18 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         else {
             if(currentNode.right==null){
                 currentNode.right= new BinaryNode<ValueType>(value,currentNode);
-                balance(this.root);
-                return true;
+                resulta= true;
             }
             else {
                 resulta= insert(value,currentNode.right);
 
             }
         }
-        if(resulta)
+
+        if(resulta){//si la ballence en avl est fait une foit apres l'ajour l'arbre est automatiquement avl
             balance(currentNode);
-        return resulta;
+        }
+        return false;
     }
 
     /** TODO O ( log n )
@@ -133,32 +133,54 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return if parent node should balance
      */
     private boolean remove(ValueType value, BinaryNode<ValueType> currentNode) {
-        boolean removeReussi=false;
+        boolean bReussi=false;
         if(value==currentNode.value){//ne regade pas si il y a des enfants a verifier
-            if(currentNode.left!=null||currentNode.right!=null)
-                socuperDesEnfant(currentNode);
+            if(currentNode.left!=null||currentNode.right!=null)//verifie si se n'ai pas une feuille
+                occuperDesEnfant(currentNode);
+            //manque quelle chosse
             currentNode.value=null;
             currentNode.parent=null;
             return  true;
         }
         if(currentNode.value.compareTo(value)==1){
-            removeReussi= remove(value,currentNode.left);
-            if(removeReussi&&currentNode.left.value==null)
+            bReussi= remove(value,currentNode.left);
+            if(bReussi&&currentNode.left.value==null)
                 currentNode.left=null;
         }
         else {
-            removeReussi= remove(value, currentNode.right);
-            if(removeReussi&&currentNode.right.value==null)
+            bReussi= remove(value, currentNode.right);
+            if(bReussi&&currentNode.right.value==null)
                 currentNode.right=null;
         }
-        if(removeReussi){
+        if(bReussi){
             balance(currentNode);
-            return false;
         }
-        return removeReussi;
+        return false;
     }
-    private void socuperDesEnfant(BinaryNode<ValueType> currentNode){
+    private void occuperDesEnfant(BinaryNode<ValueType> currentNode){
+        BinaryNode<ValueType> enfantNodeDroit =currentNode.right;
+        BinaryNode<ValueType> enfantNodeGauche =currentNode.left;
+        BinaryNode<ValueType> remplaceNode=null;
+        if(enfantNodeDroit !=null) {
+            while (enfantNodeDroit.left != null) {
+                enfantNodeDroit = enfantNodeDroit.left;
+            }
+        }
+        if(enfantNodeDroit ==null){//s occuper de l'enfant de gauche sans se proccupper de droit
 
+            remplaceNode= enfantNodeGauche;
+        }
+        else {
+
+            remplaceNode= enfantNodeDroit;
+        }
+        if(currentNode.parent==null){
+            this.root=remplaceNode;
+            remplaceNode.parent=null;
+        }
+        else{
+            if(currentNode.parent.left.value==currentNode.value){}else{}
+        }
     }
     /** TODO O( n )
      * Balances the subTree
@@ -166,13 +188,13 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      */
     private void balance(BinaryNode<ValueType> subTree) {
 
-        int iLeft,iRight,typeRotate=0;
-        iLeft=getLevelCount(subTree.left);
-        iRight=getLevelCount(subTree.right);
+        int iGauche,iDroit,typeRotation=0;
+        iGauche=getLevelCount(subTree.left);
+        iDroit=getLevelCount(subTree.right);
         while (subTree!=null){
-
+            break;
         }
-        switch (typeRotate){
+        /*switch (typeRotate){
             case 0:
                 rotateLeft(subTree);
                 break;
@@ -185,7 +207,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
             case 3:
                 doubleRotateOnRightChild(subTree);
                 break;
-        }
+        }*/
     }
 
     /** TODO O( 1 )
@@ -193,16 +215,16 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @param node1 Node to become child of its left child
      */
     private void rotateLeft(BinaryNode<ValueType> node1){
-        BinaryNode<ValueType> OLD_parent=node1.parent;
-        BinaryNode<ValueType> newTop=node1.left;
+        BinaryNode<ValueType> Vieu_parent=node1.parent;
+        BinaryNode<ValueType> nouveauxEnHaut =node1.left;
         BinaryNode<ValueType> newRight=node1.left.right;
-        newTop.parent=OLD_parent;
+        nouveauxEnHaut.parent=Vieu_parent;
         if(this.root.equals(node1))
-            this.root=newTop;
-        node1.parent=newTop;
+            this.root= nouveauxEnHaut;
+        node1.parent= nouveauxEnHaut;
         node1.left=null;
         node1.right=newRight;
-        newTop.right=node1;
+        nouveauxEnHaut.right=node1;
     }
 
     /** TODO O( 1 )

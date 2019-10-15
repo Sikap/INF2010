@@ -95,6 +95,7 @@
       <workItem from="1570584925545" duration="698000" />
       <workItem from="1570641284665" duration="695000" />
       <workItem from="1570897156540" duration="11398000" />
+      <workItem from="1571077614176" duration="14041000" />
     </task>
     <servers />
   </component>
@@ -117,11 +118,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/tp3/AvlTree.java</url>
-          <line>264</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/tests/AvlTreeTester.java</url>
           <line>251</line>
