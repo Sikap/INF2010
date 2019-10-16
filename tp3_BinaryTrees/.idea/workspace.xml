@@ -96,7 +96,7 @@
       <workItem from="1570641284665" duration="695000" />
       <workItem from="1570897156540" duration="11398000" />
       <workItem from="1571077614176" duration="14041000" />
-      <workItem from="1571177419285" duration="3699000" />
+      <workItem from="1571177419285" duration="7630000" />
     </task>
     <servers />
   </component>
@@ -119,13 +119,10 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/tests/AvlTreeTester.java</url>
-          <line>251</line>
-          <properties class="tests.AvlTreeTester" method="removeBalances">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="5" />
+          <line>240</line>
+          <option name="timeStamp" value="9" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

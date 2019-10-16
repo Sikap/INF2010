@@ -134,15 +134,25 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      */
     private boolean remove(ValueType value, BinaryNode<ValueType> currentNode) {
         boolean bReussi=false;
-        if(value==currentNode.value){//ne regade pas si il y a des enfants a verifier
+        if(value==currentNode.value){
             if(currentNode.left!=null||currentNode.right!=null)//verifie si se n'ai pas une feuille
-                occuperDesEnfant(currentNode);
-            //manque quelle chosse
-            currentNode.value=null;
-            currentNode.parent=null;
-            return  true;
+                currentNode= occuperDesEnfant(currentNode);//a tester pour voir si sa prend tous les cat
+            else{
+                if(nodeParantEstRoot(currentNode,currentNode)){
+                    this.root=null;
+                    return true;
+                }
+                else{
+                    if(currentNode.parent.left!=null){
+                        if(currentNode.parent.left.equals(currentNode))
+                            currentNode.parent.left=null;
+                    }else
+                        currentNode.parent.right=null;
+                }
+            }
+            bReussi= true;
         }
-        if(currentNode.value.compareTo(value)==1){
+        else if(currentNode.value.compareTo(value)==1){
             bReussi= remove(value,currentNode.left);
             if(bReussi&&currentNode.left.value==null)
                 currentNode.left=null;
@@ -157,36 +167,49 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         }
         return false;
     }
-    private void occuperDesEnfant(BinaryNode<ValueType> currentNode){
+    private BinaryNode<ValueType> occuperDesEnfant(BinaryNode<ValueType> currentNode){
         BinaryNode<ValueType> enfantNodeDroit =currentNode.right;
         BinaryNode<ValueType> enfantNodeGauche =currentNode.left;
-        BinaryNode<ValueType> remplaceNode=null;
+        BinaryNode<ValueType> nouvelNodeEnHaut=null;
         if(enfantNodeDroit !=null) {
             while (enfantNodeDroit.left != null) {
                 enfantNodeDroit = enfantNodeDroit.left;
             }
-            if(enfantNodeDroit.parent.left.value==enfantNodeDroit.value){
-                enfantNodeDroit.parent.left=null;
-            }
+            if(enfantNodeDroit.parent!=null)
+                if(enfantNodeDroit.parent.left.value==enfantNodeDroit.value){
+                    enfantNodeDroit.parent.left=null;
+                }
         }
-        if(enfantNodeDroit ==null){//s occuper de l'enfant de gauche sans se proccupper de droit
-            occupeDuParent(enfantNodeGauche,currentNode);
+        if(enfantNodeDroit==null){
+            nouvelNodeEnHaut= occupeDuParent(enfantNodeGauche,currentNode);
         }
         else {
-            occupeDuParent(enfantNodeDroit,currentNode);
-            
+            nouvelNodeEnHaut=occupeDuParent(enfantNodeDroit,currentNode);
+            enfantNodeDroit.left=enfantNodeGauche;
+            enfantNodeDroit.right=currentNode.right;
         }
+        return nouvelNodeEnHaut;
     }
-    private void occupeDuParent(BinaryNode<ValueType> nouvelNode,BinaryNode<ValueType> vieuxNode){
-        if(vieuxNode.parent==null){
-            this.root=nouvelNode;
-            nouvelNode.parent=null;
+    private BinaryNode<ValueType> occupeDuParent(BinaryNode<ValueType> nouvelNode,BinaryNode<ValueType> vieuxNode){
+        if( nodeParantEstRoot( nouvelNode, vieuxNode)){
+            return nouvelNode;
         }else if(vieuxNode.parent.left.value==vieuxNode.value){
             vieuxNode.parent.left=nouvelNode;
         }
-        else {
+        else if(vieuxNode.parent.right.value==vieuxNode.value){
             vieuxNode.parent.right=nouvelNode;
         }
+        nouvelNode.parent=vieuxNode.parent;
+        return nouvelNode;
+    }
+    private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<ValueType> vieuxNode){
+        if(vieuxNode.parent==null){
+            this.root=nouvelNode;
+            nouvelNode.parent=null;
+            return true;
+        }
+        else
+            return false;
     }
     /** TODO O( n )
      * Balances the subTree
