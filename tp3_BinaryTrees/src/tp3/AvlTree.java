@@ -165,21 +165,27 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
             while (enfantNodeDroit.left != null) {
                 enfantNodeDroit = enfantNodeDroit.left;
             }
+            if(enfantNodeDroit.parent.left.value==enfantNodeDroit.value){
+                enfantNodeDroit.parent.left=null;
+            }
         }
         if(enfantNodeDroit ==null){//s occuper de l'enfant de gauche sans se proccupper de droit
-
-            remplaceNode= enfantNodeGauche;
+            occupeDuParent(enfantNodeGauche,currentNode);
         }
         else {
-
-            remplaceNode= enfantNodeDroit;
+            occupeDuParent(enfantNodeDroit,currentNode);
+            
         }
-        if(currentNode.parent==null){
-            this.root=remplaceNode;
-            remplaceNode.parent=null;
+    }
+    private void occupeDuParent(BinaryNode<ValueType> nouvelNode,BinaryNode<ValueType> vieuxNode){
+        if(vieuxNode.parent==null){
+            this.root=nouvelNode;
+            nouvelNode.parent=null;
+        }else if(vieuxNode.parent.left.value==vieuxNode.value){
+            vieuxNode.parent.left=nouvelNode;
         }
-        else{
-            if(currentNode.parent.left.value==currentNode.value){}else{}
+        else {
+            vieuxNode.parent.right=nouvelNode;
         }
     }
     /** TODO O( n )
