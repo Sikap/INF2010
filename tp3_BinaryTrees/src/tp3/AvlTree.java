@@ -218,100 +218,59 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
  * @param subTree SubTree currently being accessed to verify if it respects the AVL balancing rule
  */
     private void balance(BinaryNode<ValueType> subTree) {
-        SavoirLaDirection diretionRotation=new SavoirLaDirection();
         int droit,gauche;
         while (subTree!=null){
             droit=getLevelCount(subTree.right);
             gauche=getLevelCount(subTree.left);
             if(gauche>droit+1) {
-                diretionRotation.ajout(0);
-                choixRotation(subTree, diretionRotation);
+                choixRotation(subTree,1);
                 break;
             }
             else if(droit-gauche>1) {
-                diretionRotation.ajout(1);
-                choixRotation(subTree, diretionRotation);
+                choixRotation(subTree,2);
                 break;
             }else if(subTree.parent==null){
                 break;
-            } else if(subTree.parent.left!=null){
-                if(subTree.parent.left==subTree){
-                    diretionRotation.ajout(0);
-                }
-            }else if(subTree.parent.right!=null){
-                if(subTree.parent.right==subTree){
-                    diretionRotation.ajout(1);
-                }
             }
             subTree=subTree.parent;
         }
     }
 
-    private void choixRotation(BinaryNode<ValueType> subTree, SavoirLaDirection diretionRotation) {
-        switch (diretionRotation.getDirection()){
+    private void choixRotation(BinaryNode<ValueType> subTree, int diretionRotation) {//il manque cas verifier si sais un double
+        switch (diretionRotation){
             case 1:
-                rotateLeft(subTree);
+                if()
+                    rotateLeft(subTree);
+                else
+                    doubleRotateOnLeftChild(subTree);
                 break;
             case 2:
-                rotateRight(subTree);
+                if()
+                    rotateRight(subTree);
+                else
+                    doubleRotateOnRightChild(subTree);
                 break;
-            case 3:
-                doubleRotateOnLeftChild(subTree);
-                break;
-            case 4:
-                doubleRotateOnRightChild(subTree);
         }
     }
 
-    class SavoirLaDirection {
-        private int[] balence;
-        SavoirLaDirection(){
-            balence=new int[2];
-            balence[0]=-1;
-            balence[1]=-1;
-        }
-        public void ajout(int ajout){
-            int temp = balence[0];
-            balence[0]=ajout;
-            balence[1]=temp;
-        }
-        public int getDirection(){
-            int diretuin=0;
-            if(balence[0]==0&&(balence[1]==0||balence[1]==-1)){
-                diretuin=1;
-            }else if(balence[0]==1&&(balence[1]==1||balence[1]==-1)){
-                diretuin=2;
-            } else if(balence[0]==0&&balence[1]==1){
-                diretuin=3;
-            }else if(balence[0]==1&&balence[1]==0){
-                diretuin=4;
-            }
-            return diretuin;
-        }
-    }
     /** TODO O( 1 )
      * Single rotation to the left child, AVR Algorithm
      * @param node1 Node to become child of its left child
      */
     private void rotateLeft(BinaryNode<ValueType> node1){
         BinaryNode<ValueType> OLD_parent=node1.parent;
-        BinaryNode<ValueType> newTop=node1.left;
+        BinaryNode<ValueType> nouvelNodeDuHaut =node1.left;
         BinaryNode<ValueType> newRight=node1.left.right;
-        newTop.parent=OLD_parent;
+        nouvelNodeDuHaut.parent=OLD_parent;
         if(this.root.equals(node1)){
-            this.root=newTop;
-
-
+            this.root= nouvelNodeDuHaut;
         }
-
-        if(node1.parent==root)
-        {
-            root.right=newTop;
-        }
-        node1.parent=newTop;
+        node1.parent= nouvelNodeDuHaut;
         node1.left=null;
         node1.right=newRight;
-        newTop.right=node1;
+        if(newRight!=null)
+            newRight.parent=node1;
+        nouvelNodeDuHaut.right=node1;
 
     }
 
@@ -321,20 +280,17 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
      */
     private void rotateRight(BinaryNode<ValueType> node1){
         BinaryNode<ValueType> OLD_parent=node1.parent;
-        BinaryNode<ValueType> newTop=node1.right;
+        BinaryNode<ValueType> nouvelNodeDuHaut=node1.right;
         BinaryNode<ValueType> newleft=node1.right.left;
-        newTop.parent=OLD_parent;
+        nouvelNodeDuHaut.parent=OLD_parent;
         if(this.root.equals(node1))
-            this.root=newTop;
-        if(node1.parent==root)
-        {
-           root.left=newTop;
-        }
-
-        node1.parent=newTop;
+            this.root=nouvelNodeDuHaut;
+        node1.parent=nouvelNodeDuHaut;
         node1.left=newleft;
+        if(newleft!=null)
+            newleft.parent=node1;
         node1.right=null;
-        newTop.left=node1;
+        nouvelNodeDuHaut.left=node1;
 
 
     }
