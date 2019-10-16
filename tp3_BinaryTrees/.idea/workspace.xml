@@ -99,6 +99,7 @@
       <workItem from="1570641284665" duration="695000" />
       <workItem from="1570897156540" duration="11398000" />
       <workItem from="1571185655657" duration="12916000" />
+      <workItem from="1571238461817" duration="6190000" />
     </task>
     <servers />
   </component>
@@ -138,11 +139,6 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="82" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/tp3/AvlTree.java</url>
-          <line>295</line>
-          <option name="timeStamp" value="84" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
