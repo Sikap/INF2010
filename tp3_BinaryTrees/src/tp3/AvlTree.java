@@ -265,9 +265,10 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
         if(this.root.equals(node1)){
             this.root= nouvelNodeDuHaut;
         }
+        else
+            OLD_parent.right=nouvelNodeDuHaut;
         node1.parent= nouvelNodeDuHaut;
-        node1.left=null;
-        node1.right=newRight;
+        node1.left=newRight;
         if(newRight!=null)
             newRight.parent=node1;
         nouvelNodeDuHaut.right=node1;
@@ -285,11 +286,12 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
         nouvelNodeDuHaut.parent=OLD_parent;
         if(this.root.equals(node1))
             this.root=nouvelNodeDuHaut;
+        else
+            OLD_parent.left=nouvelNodeDuHaut;
         node1.parent=nouvelNodeDuHaut;
-        node1.left=newleft;
+        node1.right=newleft;
         if(newleft!=null)
             newleft.parent=node1;
-        node1.right=null;
         nouvelNodeDuHaut.left=node1;
 
 
@@ -300,6 +302,7 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
      * @param node1 Node to become child of the right child of its left child
      */
     private void doubleRotateOnLeftChild(BinaryNode<ValueType> node1){
+        //<ValueType> nodeGauche=node1.left;
          rotateRight(node1.left);
          rotateLeft(node1);
     }
@@ -309,6 +312,7 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
      * @param node1 Node to become child of the left child of its right child
      */
     private void doubleRotateOnRightChild(BinaryNode<ValueType> node1){
+        //BinaryNode<ValueType> nodeGauche=node1.r;
         rotateLeft(node1.right);
         rotateRight(node1);
     }
