@@ -239,13 +239,13 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
     private void choixRotation(BinaryNode<ValueType> subTree, int diretionRotation) {//il manque cas verifier si sais un double
         switch (diretionRotation){
             case 1:
-                if()
+                if(getLevelCount(subTree.left.left)>=getLevelCount(subTree.left.right))
                     rotateLeft(subTree);
                 else
                     doubleRotateOnLeftChild(subTree);
                 break;
             case 2:
-                if()
+                if(getLevelCount(subTree.right.right)>=getLevelCount(subTree.right.left))
                     rotateRight(subTree);
                 else
                     doubleRotateOnRightChild(subTree);
