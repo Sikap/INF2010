@@ -186,7 +186,8 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         else {
             nouvelNodeEnHaut=occupeDuParent(enfantNodeDroit,currentNode);
             enfantNodeDroit.left=enfantNodeGauche;
-            enfantNodeDroit.right=currentNode.right;
+            if(enfantNodeDroit.value!=currentNode.right.value)
+                enfantNodeDroit.right=currentNode.right;
         }
         return nouvelNodeEnHaut;
     }
@@ -217,7 +218,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      */
     private void balance(BinaryNode<ValueType> subTree) {
 
-        int iGauche,iDroit,typeRotation=0;
+        int iGauche,iDroit;
         iGauche=getLevelCount(subTree.left);
         iDroit=getLevelCount(subTree.right);
         while (subTree!=null){
