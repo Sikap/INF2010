@@ -103,6 +103,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
             }
             else {
                 currentNode.right=new BinaryNode<ValueType>(value,currentNode);
+                balance(currentNode.right);
                 resultats=true;
             }
         }
@@ -114,12 +115,13 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
             }
             else{
                 currentNode.left= new BinaryNode<ValueType>(value,currentNode);
+                balance(currentNode.left);
                 resultats=true;
             }
         }
-        if(resultats)
-            balance(currentNode);
-        return false;
+        /*if(resultats)
+            balance(currentNode);*/
+        return resultats;
     }
 
     /** TODO O ( log n )
@@ -217,16 +219,35 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
  */
     private void balance(BinaryNode<ValueType> subTree) {
         SavoirLaDirection diretionRotation=new SavoirLaDirection();
-        int droit=getLevelCount(subTree.right);
-        int gauche=getLevelCount(subTree.left);
-        while (subTree!=root)
-        if(gauche>droit+1) {
-           diretionRotation.ajout(0);
+        int droit,gauche;
+        while (subTree!=null){
+            droit=getLevelCount(subTree.right);
+            gauche=getLevelCount(subTree.left);
+            if(gauche>droit+1) {
+                diretionRotation.ajout(0);
+                choixRotation(subTree, diretionRotation);
+                break;
+            }
+            else if(droit-gauche>1) {
+                diretionRotation.ajout(1);
+                choixRotation(subTree, diretionRotation);
+                break;
+            }else if(subTree.parent==null){
+                break;
+            } else if(subTree.parent.left!=null){
+                if(subTree.parent.left==subTree){
+                    diretionRotation.ajout(0);
+                }
+            }else if(subTree.parent.right!=null){
+                if(subTree.parent.right==subTree){
+                    diretionRotation.ajout(1);
+                }
+            }
+            subTree=subTree.parent;
+        }
+    }
 
-        }
-        else if(droit-gauche>1) {
-            diretionRotation.ajout(1);
-        }
+    private void choixRotation(BinaryNode<ValueType> subTree, SavoirLaDirection diretionRotation) {
         switch (diretionRotation.getDirection()){
             case 1:
                 rotateLeft(subTree);
@@ -241,6 +262,7 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
                 doubleRotateOnRightChild(subTree);
         }
     }
+
     class SavoirLaDirection {
         private int[] balence;
         SavoirLaDirection(){
@@ -255,16 +277,14 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
         }
         public int getDirection(){
             int diretuin=0;
-            if(balence[0]>=0&&balence[1]>=0){
-                if(balence[0]==0&&balence[1]==0){
-                    diretuin=1;
-                }else if(balence[0]==1&&balence[1]==1){
-                    diretuin=2;
-                } else if(balence[0]==0&&balence[1]==1){
-                    diretuin=3;
-                }else if(balence[0]==1&&balence[1]==0){
-                    diretuin=4;
-                }
+            if(balence[0]==0&&(balence[1]==0||balence[1]==-1)){
+                diretuin=1;
+            }else if(balence[0]==1&&(balence[1]==1||balence[1]==-1)){
+                diretuin=2;
+            } else if(balence[0]==0&&balence[1]==1){
+                diretuin=3;
+            }else if(balence[0]==1&&balence[1]==0){
+                diretuin=4;
             }
             return diretuin;
         }
