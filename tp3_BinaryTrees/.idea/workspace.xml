@@ -100,7 +100,7 @@
       <workItem from="1570897156540" duration="11398000" />
       <workItem from="1571185655657" duration="12916000" />
       <workItem from="1571238461817" duration="14345000" />
-      <workItem from="1571262471815" duration="6079000" />
+      <workItem from="1571262471815" duration="6561000" />
     </task>
     <servers />
   </component>
@@ -140,7 +140,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/tp3/AvlTree.java</url>
-          <line>260</line>
+          <line>258</line>
           <option name="timeStamp" value="105" />
         </line-breakpoint>
       </breakpoints>

@@ -171,9 +171,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         BinaryNode<ValueType> enfantNodeGauche =currentNode.left;
         BinaryNode<ValueType> nouvelNodeEnHaut=null;
         if(enfantNodeDroit !=null) {
-            while (enfantNodeDroit.left != null) {
-                enfantNodeDroit = enfantNodeDroit.left;
-            }
+            enfantNodeDroit=findMin(enfantNodeDroit);
             if(enfantNodeDroit.parent!=null)
                 if(enfantNodeDroit.parent.left.value==enfantNodeDroit.value){
                     enfantNodeDroit.parent.left=null;
