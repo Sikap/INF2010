@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77036f1a-0aea-48fe-b50e-49d402456f3d" name="Default Changelist" comment="" />
+    <list default="true" id="77036f1a-0aea-48fe-b50e-49d402456f3d" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/tp3_BinaryTrees/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tp3_BinaryTrees/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp3_BinaryTrees/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tp3_BinaryTrees/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp3_BinaryTrees/out/production/tp3_BinaryTrees/tp3/AvlTree$BinaryNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/tp3_BinaryTrees/out/production/tp3_BinaryTrees/tp3/AvlTree$BinaryNode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp3_BinaryTrees/out/production/tp3_BinaryTrees/tp3/AvlTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/tp3_BinaryTrees/out/production/tp3_BinaryTrees/tp3/AvlTree.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tp3_BinaryTrees/src/tp3/AvlTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3_BinaryTrees/src/tp3/AvlTree.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +48,7 @@
       <workItem from="1568917648404" duration="86000" />
       <workItem from="1568917762862" duration="20000" />
       <workItem from="1570130294344" duration="17000" />
+      <workItem from="1571851087090" duration="18000" />
     </task>
     <servers />
   </component>

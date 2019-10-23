@@ -99,7 +99,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         int compareResults = currentNode.value.compareTo(value);
         if(compareResults<0){
             if(currentNode.right!=null) {
-            insert(value,currentNode.right);
+                insert(value,currentNode.right);
             }
             else {
                 currentNode.right=new BinaryNode<ValueType>(value,currentNode);
@@ -111,7 +111,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
         {
             if(currentNode.left!=null)
             {
-            insert(value, currentNode.left);
+                insert(value, currentNode.left);
             }
             else{
                 currentNode.left= new BinaryNode<ValueType>(value,currentNode);
@@ -119,8 +119,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
                 resultats=true;
             }
         }
-        /*if(resultats)
-            balance(currentNode);*/
+
         return resultats;
     }
 
@@ -132,12 +131,13 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return if parent node should balance
      */
     private boolean remove(ValueType value, BinaryNode<ValueType> currentNode) {
-        boolean bReussi=false;
+        boolean success=false;
+        int compareResults = currentNode.value.compareTo(value);
         if(value==currentNode.value){
-            if(currentNode.left!=null||currentNode.right!=null)//verifie si se n'ai pas une feuille
-                currentNode= occuperDesEnfant(currentNode);//a tester pour voir si sa prend tous les cat
+            if(currentNode.left!=null||currentNode.right!=null)
+                currentNode= hasKids(currentNode);
             else{
-                if(nodeParantEstRoot(currentNode,currentNode)){
+                if(parentIsRoot(currentNode,currentNode)){
                     this.root=null;
                     return true;
                 }
@@ -149,83 +149,83 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
                         currentNode.parent.right=null;
                 }
             }
-            bReussi= true;
+            success= true;
         }
-        else if(currentNode.value.compareTo(value)==1){
-            bReussi= remove(value,currentNode.left);
-            if(bReussi&&currentNode.left.value==null)
+        else if(compareResults>0){
+            success= remove(value,currentNode.left);
+            if(success&&currentNode.left.value==null)
                 currentNode.left=null;
         }
         else {
-            bReussi= remove(value, currentNode.right);
-            if(bReussi&&currentNode.right.value==null)
+            success= remove(value, currentNode.right);
+            if(success&&currentNode.right.value==null)
                 currentNode.right=null;
         }
-        if(bReussi){
+        if(success){
             balance(currentNode);
         }
         return false;
     }
-    private BinaryNode<ValueType> occuperDesEnfant(BinaryNode<ValueType> currentNode){
-        BinaryNode<ValueType> enfantNodeDroit =currentNode.right;
-        BinaryNode<ValueType> enfantNodeGauche =currentNode.left;
-        BinaryNode<ValueType> nouvelNodeEnHaut=null;
-        if(enfantNodeDroit !=null) {
-            enfantNodeDroit=findMin(enfantNodeDroit);
-            if(enfantNodeDroit.parent!=null)
-                if(enfantNodeDroit.parent.left.value==enfantNodeDroit.value){
-                    enfantNodeDroit.parent.left=null;
+    private BinaryNode<ValueType> hasKids(BinaryNode<ValueType> currentNode){
+        BinaryNode<ValueType> rightKid =currentNode.right;
+        BinaryNode<ValueType> leftKid =currentNode.left;
+        BinaryNode<ValueType> newHeightNode=null;
+        if(rightKid !=null) {
+            rightKid=findMin(rightKid);
+            if(rightKid.parent!=null)
+                if(rightKid.parent.left.value==rightKid.value){
+                    rightKid.parent.left=null;
                 }
         }
-        if(enfantNodeDroit==null){
-            nouvelNodeEnHaut= occupeDuParent(enfantNodeGauche,currentNode);
+        if(rightKid==null){
+            newHeightNode= hasParent(leftKid,currentNode);
         }
         else {
-            nouvelNodeEnHaut=occupeDuParent(enfantNodeDroit,currentNode);
-            enfantNodeDroit.left=enfantNodeGauche;
+            newHeightNode=hasParent(rightKid,currentNode);
+            rightKid.left=leftKid;
 
-             if(enfantNodeDroit.value!=currentNode.right.value)
-    enfantNodeDroit.right=currentNode.right;
-}
-        return nouvelNodeEnHaut;
-                }
-private BinaryNode<ValueType> occupeDuParent(BinaryNode<ValueType> nouvelNode,BinaryNode<ValueType> vieuxNode){
-        if( nodeParantEstRoot( nouvelNode, vieuxNode)){
-        return nouvelNode;
-        }else if(vieuxNode.parent.left.value==vieuxNode.value){
-        vieuxNode.parent.left=nouvelNode;
+            if(rightKid.value!=currentNode.right.value)
+                rightKid.right=currentNode.right;
         }
-        else if(vieuxNode.parent.right.value==vieuxNode.value){
-        vieuxNode.parent.right=nouvelNode;
+        return newHeightNode;
+    }
+    private BinaryNode<ValueType> hasParent(BinaryNode<ValueType> newNode,BinaryNode<ValueType> oldNode){
+        if(parentIsRoot( newNode, oldNode)){
+            return newNode;
+        }else if(oldNode.parent.left.value==oldNode.value){
+            oldNode.parent.left=newNode;
         }
-        nouvelNode.parent=vieuxNode.parent;
-        return nouvelNode;
+        else if(oldNode.parent.right.value==oldNode.value){
+            oldNode.parent.right=newNode;
         }
-private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<ValueType> vieuxNode){
-        if(vieuxNode.parent==null){
-        this.root=nouvelNode;
-        nouvelNode.parent=null;
-        return true;
+        newNode.parent=oldNode.parent;
+        return newNode;
+    }
+    private boolean parentIsRoot(BinaryNode<ValueType> newNode, BinaryNode<ValueType> oldNode){
+        if(oldNode.parent==null){
+            this.root=newNode;
+            newNode.parent=null;
+            return true;
         }
         else
-        return false;
-        }
+            return false;
+    }
 
-/** TODO O( n )
- * Balances the subTree
- * @param subTree SubTree currently being accessed to verify if it respects the AVL balancing rule
- */
+    /** TODO O( n )
+     * Balances the subTree
+     * @param subTree SubTree currently being accessed to verify if it respects the AVL balancing rule
+     */
     private void balance(BinaryNode<ValueType> subTree) {
-        int droit,gauche;
+        int right,left;
         while (subTree!=null){
-            droit=getLevelCount(subTree.right);
-            gauche=getLevelCount(subTree.left);
-            if(gauche>droit+1) {
-                choixRotation(subTree,1);
+            right=getLevelCount(subTree.right);
+            left=getLevelCount(subTree.left);
+            if(left>right+1) {
+                chooseRotation(subTree,1);
                 break;
             }
-            else if(droit-gauche>1) {
-                choixRotation(subTree,2);
+            else if(right-left>1) {
+                chooseRotation(subTree,2);
                 break;
             }else if(subTree.parent==null){
                 break;
@@ -234,8 +234,8 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
         }
     }
 
-    private void choixRotation(BinaryNode<ValueType> subTree, int diretionRotation) {//il manque cas verifier si sais un double
-        switch (diretionRotation){
+    private void chooseRotation(BinaryNode<ValueType> subTree, int directionRotation) {
+        switch (directionRotation){
             case 1:
                 if(getLevelCount(subTree.left.left)>=getLevelCount(subTree.left.right))
                     rotateLeft(subTree);
@@ -256,23 +256,23 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
      * @param node1 Node to become child of its left child
      */
     private void rotateLeft(BinaryNode<ValueType> node1){
-        BinaryNode<ValueType> OLD_parent=node1.parent;
-        BinaryNode<ValueType> nouvelNodeDuHaut =node1.left;
+        BinaryNode<ValueType> oldParent=node1.parent;
+        BinaryNode<ValueType> newHeightNode =node1.left;
         BinaryNode<ValueType> newRight=node1.left.right;
-        nouvelNodeDuHaut.parent=OLD_parent;
+        newHeightNode.parent=oldParent;
         if(this.root.equals(node1)){
-            this.root= nouvelNodeDuHaut;
+            this.root= newHeightNode;
         }
         else
-            if(OLD_parent.left.value==node1.value)
-                OLD_parent.left=nouvelNodeDuHaut;
-            else
-                OLD_parent.right=nouvelNodeDuHaut;
-        node1.parent= nouvelNodeDuHaut;
+        if(oldParent.left.value==node1.value)
+            oldParent.left=newHeightNode;
+        else
+            oldParent.right=newHeightNode;
+        node1.parent= newHeightNode;
         node1.left=newRight;
         if(newRight!=null)
             newRight.parent=node1;
-        nouvelNodeDuHaut.right=node1;
+        newHeightNode.right=node1;
 
     }
 
@@ -281,22 +281,22 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
      * @param node1 Node to become child of its right child
      */
     private void rotateRight(BinaryNode<ValueType> node1){
-        BinaryNode<ValueType> OLD_parent=node1.parent;
-        BinaryNode<ValueType> nouvelNodeDuHaut=node1.right;
+        BinaryNode<ValueType> oldParent=node1.parent;
+        BinaryNode<ValueType> newHeightNode=node1.right;
         BinaryNode<ValueType> newleft=node1.right.left;
-        nouvelNodeDuHaut.parent=OLD_parent;
+        newHeightNode.parent=oldParent;
         if(this.root.equals(node1))
-            this.root=nouvelNodeDuHaut;
+            this.root=newHeightNode;
         else
-        if(OLD_parent.left.value==node1.value)
-            OLD_parent.left=nouvelNodeDuHaut;
+        if(oldParent.left.value==node1.value)
+            oldParent.left=newHeightNode;
         else
-            OLD_parent.right=nouvelNodeDuHaut;
-        node1.parent=nouvelNodeDuHaut;
+            oldParent.right=newHeightNode;
+        node1.parent=newHeightNode;
         node1.right=newleft;
         if(newleft!=null)
             newleft.parent=node1;
-        nouvelNodeDuHaut.left=node1;
+        newHeightNode.left=node1;
 
 
     }
@@ -306,9 +306,8 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
      * @param node1 Node to become child of the right child of its left child
      */
     private void doubleRotateOnLeftChild(BinaryNode<ValueType> node1){
-        //BinaryNode<ValueType> nodeGauche=node1.left;
-         rotateRight(node1.left);
-         rotateLeft(node1);
+        rotateRight(node1.left);
+        rotateLeft(node1);
     }
 
     /** TODO O( 1 )
@@ -316,7 +315,6 @@ private boolean nodeParantEstRoot(BinaryNode<ValueType> nouvelNode,BinaryNode<Va
      * @param node1 Node to become child of the left child of its right child
      */
     private void doubleRotateOnRightChild(BinaryNode<ValueType> node1){
-        //BinaryNode<ValueType> nodeGauche=node1.r;
         rotateLeft(node1.right);
         rotateRight(node1);
     }
