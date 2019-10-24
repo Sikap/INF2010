@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a63b7068-f962-4dac-8811-a6525895809e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree$BinaryNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp3_BinaryTrees/tp3/AvlTree$BinaryNode.class" afterDir="false" />
@@ -37,7 +36,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../tp3_BinaryTrees_Correction" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -109,11 +108,16 @@
       <workItem from="1571238461817" duration="14345000" />
       <workItem from="1571262471815" duration="6561000" />
       <workItem from="1571854132642" duration="1772000" />
+<<<<<<< HEAD
       <workItem from="1571880077999" duration="227000" />
       <workItem from="1571881672914" duration="1478000" />
       <workItem from="1571939112141" duration="434000" />
       <workItem from="1571940115865" duration="82000" />
       <workItem from="1571940341353" duration="265000" />
+=======
+      <workItem from="1571881720259" duration="362000" />
+      <workItem from="1571886494548" duration="1852000" />
+>>>>>>> 2130b1b0dd388891d31a526d5998d537cc2edd09
     </task>
     <servers />
   </component>
