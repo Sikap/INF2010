@@ -95,7 +95,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return if parent node should balance
      */
     private boolean insert (ValueType value, BinaryNode<ValueType> currentNode){
-        boolean resultats=false;
+
         int compareResults = currentNode.value.compareTo(value);
         if(compareResults<0){
             if(currentNode.right!=null) {
@@ -104,7 +104,7 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
             else {
                 currentNode.right=new BinaryNode<ValueType>(value,currentNode);
                 balance(currentNode.right);
-                resultats=true;
+                return true;
             }
         }
         else if(compareResults>0)
@@ -116,11 +116,11 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
             else{
                 currentNode.left= new BinaryNode<ValueType>(value,currentNode);
                 balance(currentNode.left);
-                resultats=true;
+                return true;
             }
         }
 
-        return resultats;
+        return false;
     }
 
     /** TODO O ( log n )
@@ -131,13 +131,26 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
      * @return if parent node should balance
      */
     private boolean remove(ValueType value, BinaryNode<ValueType> currentNode) {
-        boolean success=false;
+        if(currentNode==null){return false;}
         int compareResults = currentNode.value.compareTo(value);
-        if(value==currentNode.value){
-            if(currentNode.left!=null||currentNode.right!=null)
-                currentNode= hasKids(currentNode);
-            else{
-                if(parentIsRoot(currentNode,currentNode)){
+        if(compareResults>0){
+            remove(value,currentNode.left);
+        }else if(compareResults<0){
+           remove(value, currentNode.right);
+        }else if(currentNode.left!=null&&currentNode.right!=null){// If node that we want removed has 2 Kids
+            ValueType minOfRightKid =findMin(currentNode.right).value;
+            currentNode.value=findMin(currentNode.right).value;
+            remove(minOfRightKid,currentNode.right);
+        }else if(currentNode.right!=null){// If node that we want removed has only a right Kid
+            currentNode.parent.left=currentNode.right;
+            balance(currentNode);
+            return true;
+        }else  if(currentNode.left!=null){// If node that we want removed has only a left Kid
+            currentNode.parent.left=currentNode.left;
+            balance(currentNode);
+            return true;
+        }else{// If node that we want removed has no Kids
+                if(currentNode.equals(root)){
                     this.root=null;
                     return true;
                 }
@@ -148,101 +161,41 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
                     }else
                         currentNode.parent.right=null;
                 }
-            }
-            success= true;
-        }
-        else if(compareResults>0){
-            success= remove(value,currentNode.left);
-            if(success&&currentNode.left.value==null)
-                currentNode.left=null;
-        }
-        else {
-            success= remove(value, currentNode.right);
-            if(success&&currentNode.right.value==null)
-                currentNode.right=null;
-        }
-        if(success){
             balance(currentNode);
+                return true;
         }
         return false;
     }
-    private BinaryNode<ValueType> hasKids(BinaryNode<ValueType> currentNode){
-        BinaryNode<ValueType> rightKid =currentNode.right;
-        BinaryNode<ValueType> leftKid =currentNode.left;
-        BinaryNode<ValueType> newHeightNode=null;
-        if(rightKid !=null) {
-            rightKid=findMin(rightKid);
-            if(rightKid.parent!=null)
-                if(rightKid.parent.left.value==rightKid.value){
-                    rightKid.parent.left=null;
-                }
-        }
-        if(rightKid==null){
-            newHeightNode= hasParent(leftKid,currentNode);
-        }
-        else {
-            newHeightNode=hasParent(rightKid,currentNode);
-            rightKid.left=leftKid;
 
-            if(rightKid.value!=currentNode.right.value)
-                rightKid.right=currentNode.right;
-        }
-        return newHeightNode;
-    }
-    private BinaryNode<ValueType> hasParent(BinaryNode<ValueType> newNode,BinaryNode<ValueType> oldNode){
-        if(parentIsRoot( newNode, oldNode)){
-            return newNode;
-        }else if(oldNode.parent.left.value==oldNode.value){
-            oldNode.parent.left=newNode;
-        }
-        else if(oldNode.parent.right.value==oldNode.value){
-            oldNode.parent.right=newNode;
-        }
-        newNode.parent=oldNode.parent;
-        return newNode;
-    }
-    private boolean parentIsRoot(BinaryNode<ValueType> newNode, BinaryNode<ValueType> oldNode){
-        if(oldNode.parent==null){
-            this.root=newNode;
-            newNode.parent=null;
-            return true;
-        }
-        else
-            return false;
-    }
-
+    public enum Direction{rightDirection,leftDirection};
     /** TODO O( n )
      * Balances the subTree
      * @param subTree SubTree currently being accessed to verify if it respects the AVL balancing rule
      */
     private void balance(BinaryNode<ValueType> subTree) {
-        int right,left;
+        int levelRight,levelLeft;
         while (subTree!=null){
-            right=getLevelCount(subTree.right);
-            left=getLevelCount(subTree.left);
-            if(left>right+1) {
-                chooseRotation(subTree,1);
-                break;
+            levelRight=getLevelCount(subTree.right);
+            levelLeft=getLevelCount(subTree.left);
+            if(levelLeft>levelRight+1) {
+                chooseRotation(subTree,Direction.leftDirection);
             }
-            else if(right-left>1) {
-                chooseRotation(subTree,2);
-                break;
-            }else if(subTree.parent==null){
-                break;
+            if(levelRight-levelLeft>1) {
+                chooseRotation(subTree,Direction.rightDirection);
             }
             subTree=subTree.parent;
         }
     }
 
-    private void chooseRotation(BinaryNode<ValueType> subTree, int directionRotation) {
+    private void chooseRotation(BinaryNode<ValueType> subTree, Direction directionRotation) {
         switch (directionRotation){
-            case 1:
+            case leftDirection:
                 if(getLevelCount(subTree.left.left)>=getLevelCount(subTree.left.right))
                     rotateLeft(subTree);
                 else
                     doubleRotateOnLeftChild(subTree);
                 break;
-            case 2:
+            case rightDirection:
                 if(getLevelCount(subTree.right.right)>=getLevelCount(subTree.right.left))
                     rotateRight(subTree);
                 else
