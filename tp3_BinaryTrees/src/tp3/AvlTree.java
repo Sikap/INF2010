@@ -142,11 +142,15 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
             currentNode.value=findMin(currentNode.right).value;
             remove(minOfRightKid,currentNode.right);
         }else if(currentNode.right!=null){// If node that we want removed has only a right Kid
+            if(currentNode.parent.left.equals(currentNode))
             currentNode.parent.left=currentNode.right;
+            else currentNode.parent.right=currentNode.right;
             balance(currentNode);
             return true;
         }else  if(currentNode.left!=null){// If node that we want removed has only a left Kid
+            if(currentNode.parent.left.equals(currentNode))
             currentNode.parent.left=currentNode.left;
+            else currentNode.parent.right=currentNode.left;
             balance(currentNode);
             return true;
         }else{// If node that we want removed has no Kids
@@ -156,10 +160,10 @@ public class AvlTree<ValueType extends Comparable<? super ValueType> > {
                 }
                 else{
                     if(currentNode.parent.left!=null){
-                        if(currentNode.parent.left.equals(currentNode))
+                        if(currentNode.parent.left.equals(currentNode)){
                             currentNode.parent.left=null;
-                    }else
-                        currentNode.parent.right=null;
+                        } else currentNode.parent.right=null;
+                    }else currentNode.parent.right=null;
                 }
             balance(currentNode);
                 return true;
