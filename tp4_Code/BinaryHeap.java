@@ -19,6 +19,7 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
     @SuppressWarnings("unchecked")
     public BinaryHeap( AnyType[] items, boolean min ){
 	    this.min = min;
+
 		// COMPLETEZ
 	    // invoquez buildMinHeap() ou buildMaxHeap() en fonction du parametre min;
     }
@@ -29,7 +30,11 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
 	
 	    if( currentSize + 1 == array.length )
 	    doubleArray();
-	
+        if(min){
+            
+        }else{
+
+        }
 	    // COMPLETEZ
 	
 	    return true;
