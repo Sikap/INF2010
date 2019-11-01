@@ -1,4 +1,5 @@
-import java.util.*; 
+import java.lang.reflect.Array;
+import java.util.*;
 
 
 public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends AbstractQueue<AnyType>
@@ -27,19 +28,51 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
     public boolean offer( AnyType x ){
 	    if (x == null)
 	    throw new NullPointerException("Cannot insert null in a BinaryHeap");
-	
-	    if( currentSize + 1 == array.length )
-	    doubleArray();
-        if(min){
-            
-        }else{
 
+	    if( currentSize + 1 == array.length )
+	        doubleArray();
+        // COMPLETEZ
+        AnyType tmp;
+        int nombreCasseAvisiter[]= caseAVisiter();
+        for(int i =0;i<nombreCasseAvisiter.length;i++){
+            if(array[nombreCasseAvisiter[i]]==null){
+                array[nombreCasseAvisiter[i]]=x;
+            }else{
+                int position= array[nombreCasseAvisiter[i]].compareTo(x);
+                if(position>0){
+                    if(min){
+                      tmp=  array[nombreCasseAvisiter[i]];
+                        array[nombreCasseAvisiter[i]]=x;
+                        x=tmp;
+                    }else{
+
+                    }
+                }else{
+                    if(min){
+
+                    }else{
+                        tmp=  array[nombreCasseAvisiter[i]];
+                        array[nombreCasseAvisiter[i]]=x;
+                        x=tmp;
+                    }
+                }
+            }
         }
-	    // COMPLETEZ
-	
+
+        currentSize++;
 	    return true;
     }
-    
+    private int[] caseAVisiter(){
+        int position=size()+1;
+        int grandeur=(int)(Math.log10(position)/Math.log10(2))+1;
+        int nombreCasseAvisiter[] =new int[grandeur];
+
+        for (;grandeur>0;grandeur--){
+            nombreCasseAvisiter[grandeur-1]=position;
+                position/=2;
+        }
+        return nombreCasseAvisiter ;
+    }
     public AnyType peek(){
 	    if(!isEmpty())
 	    return array[1];
