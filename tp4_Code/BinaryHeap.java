@@ -1,3 +1,5 @@
+import sun.dc.pr.PRError;
+
 import java.lang.reflect.Array;
 import java.util.*;
 
@@ -22,6 +24,13 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
 	    this.min = min;
 
 		// COMPLETEZ
+        array = (AnyType[]) new Comparable[ DEFAULT_CAPACITY + 1];
+        for(int i=1;i<items.length;i++) {
+            array[i] = items[i - 1];
+            currentSize++;
+        } if(min){
+            buildMinHeap();
+        }else buildMaxHeap();
 	    // invoquez buildMinHeap() ou buildMaxHeap() en fonction du parametre min;
     }
     
@@ -90,11 +99,14 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
     }
     
     private void buildMinHeap(){
-	   //COMPLETEZ
+        for( int i = (currentSize / 2); i > 0; i-- )
+            percolateDownMinHeap(i,currentSize);
     }
     
     private void buildMaxHeap(){
 	    //COMPLETEZ
+        for( int i = (currentSize / 2); i > 0; i-- )
+            percolateDownMaxHeap(i,currentSize);
     }
     
     public boolean isEmpty(){
@@ -156,6 +168,20 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
 				    void percolateDownMinHeap( AnyType[] array, int hole, int size, boolean heapIndexing )
     {
 	//COMPLETEZ
+        int child=hole;
+        AnyType tmp = array[hole];
+        for(;hole*2<=size;hole=child){
+            child=leftChild(hole,heapIndexing);
+            int compareRightToLeftkid=array[child+1].compareTo(array[child]);
+            if(child!=size&& compareRightToLeftkid<0){
+                child++;
+            }
+            if( array[ child ].compareTo( tmp ) < 0 ){
+                array[ hole ] = array[ child ];
+            }
+            else break;
+        }
+        array[hole]=tmp;
     }
     
     /**
@@ -176,6 +202,20 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
 				    void percolateDownMaxHeap( AnyType[] array, int hole, int size, boolean heapIndexing )
     {
 	//COMPLETEZ
+        int child=hole;
+        AnyType tmp = array[hole];
+        for(;hole*2<=size;hole=child){
+            child=leftChild(hole,heapIndexing);
+            int compareRightToLeftkid=array[child+1].compareTo(array[child]);
+            if(child!=size&& compareRightToLeftkid>0){
+                child++;
+            }
+            if( array[ child ].compareTo( tmp ) > 0 ){
+                array[ hole ] = array[ child ];
+            }
+            else break;
+        }
+        array[hole]=tmp;
     }
     
     public static <AnyType extends Comparable<? super AnyType>>
