@@ -169,19 +169,18 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
 				    void percolateDownMinHeap( AnyType[] array, int hole, int size, boolean heapIndexing )
     {
 	//COMPLETEZ
-        int child=hole;
-        AnyType tmp = array[hole];
-        for(;hole*2<=size;hole=child){
-            child=leftChild(hole,heapIndexing);
-            if(child!=size&& array[child+1].compareTo(array[child])<0){
+        int child;
+        AnyType tmp;
+        for( tmp = array[ hole ]; leftChild( hole,heapIndexing ) < size; hole = child ) {
+            child = leftChild( hole ,heapIndexing);
+            if( child != size - 1 && array[ child ].compareTo( array[ child + 1 ] ) >0 )
                 child++;
-            }
-            if( array[ child ].compareTo( tmp ) < 0 ){
+            if( tmp.compareTo( array[ child ] ) > 0 )
                 array[ hole ] = array[ child ];
-            }
-            else break;
+            else
+                break;
         }
-        array[hole]=tmp;
+        array[ hole ] = tmp;
     }
     
     /**
@@ -203,41 +202,53 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
     {
 	//COMPLETEZ
 
-        int child=hole;
-        AnyType tmp = array[hole];
-        for(;hole*2<=size;hole=child){
-            child=leftChild(hole,heapIndexing);
-            if(child!=size&& array[child+1].compareTo(array[child])>0){
+        int child;
+        AnyType tmp;
+        for( tmp = array[ hole ]; leftChild( hole,heapIndexing ) < size; hole = child ) {
+            child = leftChild( hole ,heapIndexing);
+            if( child != size - 1 && array[ child ].compareTo( array[ child + 1 ] ) < 0 )
                 child++;
-            }
-            if( array[ child ].compareTo( tmp ) > 0 ){
+            if( tmp.compareTo( array[ child ] ) < 0 )
                 array[ hole ] = array[ child ];
-            }
-            else break;
+            else
+                break;
         }
-        array[hole]=tmp;
+        array[ hole ] = tmp;
     }
-    
+
     public static <AnyType extends Comparable<? super AnyType>>
 				   void heapSort( AnyType[] a )
     {
 	//COMPLETEZ
+        for( int i = a.length / 2; i >= 0; i-- )
+            percolateDownMaxHeap(a,i,a.length,false);
+        for( int i = a.length - 1; i > 0; i-- )
+        {
+            swapReferences( a, 0, i );
+            percolateDownMaxHeap(a,0,i,false);
+        }
 
     }
 
     public static <AnyType extends Comparable<? super AnyType>>
 				   void heapSortReverse( AnyType[] a )
     {
+        for( int i = a.length / 2; i >= 0; i-- )
+            percolateDownMinHeap(a,i,a.length,false);
+        for( int i = a.length - 1; i > 0; i-- )
+        {
+            swapReferences( a, 0, i );
+            percolateDownMinHeap(a,0,i,false);
+        }
 
     }
     
     public String nonRecursivePrintFancyTree()
     {
-	String outputString = "";
-	
-	//COMPLETEZ
+        String outputString = "";
 
-	return outputString;
+
+        return outputString;
     }
     
     public String printFancyTree()
