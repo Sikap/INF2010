@@ -22,7 +22,6 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
     @SuppressWarnings("unchecked")
     public BinaryHeap( AnyType[] items, boolean min ){
 	    this.min = min;
-
 		// COMPLETEZ
         array = (AnyType[]) new Comparable[ DEFAULT_CAPACITY + 1];
         for(int i=1;i<items.length;i++) {
@@ -91,6 +90,8 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
     
     public AnyType poll(){
 	    //COMPLETEZ
+        if(peek()!=null)
+            array[1]=null;
     	return null/**/;
     }
     
@@ -275,17 +276,26 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
     }
     
     private class HeapIterator implements Iterator {
-	
-	public boolean hasNext() {
-	    //COMPLETEZ
-            return false/**/;
-	}
+        private int curentPosition=1;
+        private int curentModification=modifications;
+
+    public boolean hasNext() {
+        //COMPLETEZ
+            if(curentPosition!=currentSize && curentPosition<currentSize){
+                return true;
+            } else return false;
+    }
 
 	public Object next() throws NoSuchElementException, 
 				    ConcurrentModificationException, 
 				    UnsupportedOperationException {
 	    //COMPLETEZ
-		return null/**/;
+        if (!hasNext())
+            throw new NoSuchElementException();
+        if(modifications==curentModification) {
+            return array[curentPosition++];
+        } else throw new ConcurrentModificationException();
+
 	}
 	
 	public void remove() {
