@@ -23,9 +23,9 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
     public BinaryHeap( AnyType[] items, boolean min ){
 	    this.min = min;
 		// COMPLETEZ
-        array = (AnyType[]) new Comparable[ DEFAULT_CAPACITY + 1];
-        for(int i=1;i<items.length;i++) {
-            array[i] = items[i - 1];
+        array = (AnyType[]) new Comparable[ items.length +1];
+        for(int i=1;i<=items.length;i++) {
+            array[i]= items[i-1];
             currentSize++;
         } if(min){
             buildMinHeap();
@@ -173,8 +173,7 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
         AnyType tmp = array[hole];
         for(;hole*2<=size;hole=child){
             child=leftChild(hole,heapIndexing);
-            int compareRightToLeftkid=array[child+1].compareTo(array[child]);
-            if(child!=size&& compareRightToLeftkid<0){
+            if(child!=size&& array[child+1].compareTo(array[child])<0){
                 child++;
             }
             if( array[ child ].compareTo( tmp ) < 0 ){
@@ -203,12 +202,12 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
 				    void percolateDownMaxHeap( AnyType[] array, int hole, int size, boolean heapIndexing )
     {
 	//COMPLETEZ
+
         int child=hole;
         AnyType tmp = array[hole];
         for(;hole*2<=size;hole=child){
             child=leftChild(hole,heapIndexing);
-            int compareRightToLeftkid=array[child+1].compareTo(array[child]);
-            if(child!=size&& compareRightToLeftkid>0){
+            if(child!=size&& array[child+1].compareTo(array[child])>0){
                 child++;
             }
             if( array[ child ].compareTo( tmp ) > 0 ){
@@ -223,12 +222,13 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
 				   void heapSort( AnyType[] a )
     {
 	//COMPLETEZ
+
     }
-    
+
     public static <AnyType extends Comparable<? super AnyType>>
 				   void heapSortReverse( AnyType[] a )
     {
-	//COMPLETEZ
+
     }
     
     public String nonRecursivePrintFancyTree()
