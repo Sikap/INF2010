@@ -246,6 +246,9 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
     public String nonRecursivePrintFancyTree()
     {
         String outputString = "";
+        int i=0;
+        ArrayDeque<Integer> nodesToCheck = new ArrayDeque<>();
+        while(i>=0){}
 
 
         return outputString;
