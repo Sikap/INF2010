@@ -1,3 +1,4 @@
+import javafx.util.Pair;
 import sun.dc.pr.PRError;
 
 import java.lang.reflect.Array;
@@ -242,12 +243,51 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
         }
 
     }
-    
+
+
     public String nonRecursivePrintFancyTree()
     {
+
         String outputString = "";
+        String prefix = "";
+        Pair<String, Integer>[] prefixWithIndex = new Pair[currentSize];
+        int index=1;
+        while (2*index<currentSize)
+        {
+            outputString += prefix + "|__";
+            prefixWithIndex[index]= new Pair<>(prefix,index);
+            outputString += array[index] + "\n";
+            if (index % 2 == 0)
+                prefix += "|  " ; // un | et trois espace
+            else
+                prefix += "   "; // quatre espaces
 
+            index=2*index;
+        }
+        int level= index/2;
+        int indexKid=2 * level;
+        int indexBrother =level + 1;
+        for (int i = 0; i < 2; i++)
+            outputString += prefixWithIndex[level].getKey() + "|  |__" + array[indexKid + i] + "\n";
 
+        outputString += prefixWithIndex[level].getKey() + "|__" + array[indexBrother] + "\n";
+
+        for (int i = 2; i < 4; i++)
+            outputString += prefixWithIndex[level].getKey() + "   |__" + array[indexKid + i] + "\n";
+
+        while ((level/2)!=1) {
+            level = level / 2;
+            indexBrother = level + 1;
+            outputString += prefixWithIndex[level].getKey() + "|__" + array[indexBrother] + "\n";
+            outputString += prefixWithIndex[level].getKey() + "   |__" + array[2 * (level + 1)] + "\n";
+            outputString += prefixWithIndex[level].getKey() + "   |  |__" + array[4 * (level + 1)] + "\n";
+            outputString += prefixWithIndex[level].getKey() + "   |  |__" + array[4 * (level + 1) + 1] + "\n";
+            outputString += prefixWithIndex[level].getKey() + "   |__" + array[2 * (level + 1) + 1] + "\n";
+            outputString += prefixWithIndex[level].getKey() + "      |__" + array[2 * (2 * (level + 1) + 1)] + "\n";
+            if(2 * (2 * (level + 1) + 1) + 1> currentSize) {
+                outputString += prefixWithIndex[level].getKey() + "      |__" + "null" + "\n";
+            }else outputString += prefixWithIndex[level].getKey() + "      |__" + array[2 * (2 * (level + 1) + 1) + 1] + "\n";
+        }
         return outputString;
     }
     
@@ -255,13 +295,14 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
     {
 	return printFancyTree(1, "");
     }
-    
+
     private String printFancyTree( int index, String prefix)
     {
+
 	String outputString = "";
 	
 	outputString = prefix + "|__";
-	
+
 	if( index <= currentSize )
 	    {
 		boolean isLeaf = index > currentSize/2;
