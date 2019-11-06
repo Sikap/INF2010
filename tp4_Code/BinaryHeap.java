@@ -1,6 +1,3 @@
-import sun.dc.pr.PRError;
-
-import java.lang.reflect.Array;
 import java.util.*;
 
 
@@ -27,9 +24,11 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
         for(int i=1;i<=items.length;i++) {
             array[i]= items[i-1];
             currentSize++;
-        } if(min){
+        }
+        if(min){
             buildMinHeap();
-        }else buildMaxHeap();
+        }else
+            buildMaxHeap();
 	    // invoquez buildMinHeap() ou buildMaxHeap() en fonction du parametre min;
     }
     
@@ -41,6 +40,7 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
 	        doubleArray();
         // COMPLETEZ
         AnyType tmp;
+        currentSize++;
         int nombreCasseAvisiter[]= caseAVisiter();
         for(int i =0;i<nombreCasseAvisiter.length;i++){
             if(array[nombreCasseAvisiter[i]]==null){
@@ -52,6 +52,7 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
                       tmp=  array[nombreCasseAvisiter[i]];
                         array[nombreCasseAvisiter[i]]=x;
                         x=tmp;
+                        modifications++;
                     }else{
 
                     }
@@ -62,37 +63,43 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
                         tmp=  array[nombreCasseAvisiter[i]];
                         array[nombreCasseAvisiter[i]]=x;
                         x=tmp;
+                        modifications++;
                     }
                 }
             }
         }
 
-        currentSize++;
+
 	    return true;
     }
     private int[] caseAVisiter(){
-        int position=size()+1;
-        int grandeur=(int)(Math.log10(position)/Math.log10(2))+1;
-        int nombreCasseAvisiter[] =new int[grandeur];
+        int position=size();
+        int nbElement =(int)(Math.log10(position)/Math.log10(2)+1);//+1 because element at 0 snd the first element at 1.
+        int nombreCasseAvisiter[] =new int[nbElement];
 
-        for (;grandeur>0;grandeur--){
-            nombreCasseAvisiter[grandeur-1]=position;
+        for (; nbElement >0; nbElement--){
+            nombreCasseAvisiter[nbElement -1]=position;
                 position/=2;
         }
         return nombreCasseAvisiter ;
     }
     public AnyType peek(){
 	    if(!isEmpty())
-	    return array[1];
-	
+	        return array[1];
 	    return null;
     }
     
     public AnyType poll(){
 	    //COMPLETEZ
-        if(peek()!=null)
-            array[1]=null;
-    	return null/**/;
+        AnyType element= peek();
+        if(element!=null){
+            array[1]=array[currentSize--];
+        }
+        if(min){
+            buildMinHeap();
+        }else
+            buildMaxHeap();
+    	return element;
     }
     
     public Iterator<AnyType> iterator(){
@@ -100,8 +107,8 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
     }
     
     private void buildMinHeap(){
-        for( int i = (currentSize / 2); i > 0; i-- )
-            percolateDownMinHeap(i,currentSize);
+        for( int i = (currentSize / 2); i > 0; i-- ){
+            percolateDownMinHeap(i,currentSize);}
     }
     
     private void buildMaxHeap(){
@@ -157,6 +164,7 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
      */
     private void percolateDownMinHeap( int hole, int size ){
 	     percolateDownMinHeap(array, hole, size, true);
+	     modifications++;
     }
     
     /**
@@ -189,6 +197,7 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
      */
     private void percolateDownMaxHeap( int hole, int size ){
 	    percolateDownMaxHeap(array, hole, size, true);
+        modifications++;
     }
     
     /**
@@ -242,14 +251,12 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
         }
 
     }
-    
+
+
     public String nonRecursivePrintFancyTree()
     {
         String outputString = "";
         int i=0;
-        ArrayDeque<Integer> nodesToCheck = new ArrayDeque<>();
-        while(i>=0){}
-
 
         return outputString;
     }
@@ -258,13 +265,14 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
     {
 	return printFancyTree(1, "");
     }
-    
+
     private String printFancyTree( int index, String prefix)
     {
+
 	String outputString = "";
 	
 	outputString = prefix + "|__";
-	
+
 	if( index <= currentSize )
 	    {
 		boolean isLeaf = index > currentSize/2;
@@ -295,7 +303,7 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
 
     public boolean hasNext() {
         //COMPLETEZ
-            if(curentPosition!=currentSize && curentPosition<currentSize){
+            if(curentPosition<=currentSize){
                 return true;
             } else return false;
     }

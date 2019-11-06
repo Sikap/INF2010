@@ -70,6 +70,55 @@ public class Main
       /*
        * Ajouter appels pour repondre a la question
        **/
+       heap = new BinaryHeap<Integer>(items,false);
+       System.out.println("Tableau des donne de itérateur :");
+       String donner="";
+       Iterator testIterator =heap.iterator();
+       while (testIterator.hasNext()){
+            donner+=testIterator.next();
+            donner+=", ";
+       }
+       System.out.println(donner);
+       heap = new BinaryHeap<Integer>(items,false);
+       System.out.println("Test de modification:");
+       donner="";
+       testIterator =heap.iterator();
+       heap.offer(5);
+       try {
+           while (testIterator.hasNext()){
+               donner+=testIterator.next();
+               donner+=", ";
+           }
+           System.out.println("reussis");
+       }catch (ConcurrentModificationException a){
+           System.out.println("a jout avec modification donc arraite ");
+       }
+       heap.offer(100);
+       try {
+           while (testIterator.hasNext()){
+               donner+=testIterator.next();
+               donner+=", ";
+           }
+           System.out.println();
+       }catch (ConcurrentModificationException a){
+           System.out.println("a jout avec modification donc arraite ");
+       }
+       System.out.println("test iterator remove");
+       try {
+           testIterator.remove();
+       }catch (UnsupportedOperationException a){
+           System.out.println("remove not a soupported operation ");
+       }
+
+
+       BinaryHeap test = new BinaryHeap<Integer>(items,false);
+       System.out.println("Tableau poll test :");
+       while (test.size()>0){
+           Object a = test.poll();
+           System.out.print(a);
+           if(test.size()>0)
+               System.out.print(", ");
+       }
    }
 
    private static <AnyType> String printArray(AnyType[] a)
