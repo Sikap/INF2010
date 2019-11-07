@@ -70,6 +70,7 @@ public class Main
       /*
        * Ajouter appels pour repondre a la question
        **/
+       System.out.println("\n"+"\n"+"Test section "+"\n"+"\n");
        heap = new BinaryHeap<Integer>(items,false);
        System.out.println("Tableau des donne de itérateur :");
        String donner="";
@@ -78,7 +79,7 @@ public class Main
             donner+=testIterator.next();
             donner+=", ";
        }
-       System.out.println(donner);
+       System.out.println(donner+"\n");
        heap = new BinaryHeap<Integer>(items,false);
        System.out.println("Test de modification:");
        donner="";
@@ -89,25 +90,25 @@ public class Main
                donner+=testIterator.next();
                donner+=", ";
            }
-           System.out.println("reussis");
+           System.out.println("reussis"+"\n");
        }catch (ConcurrentModificationException a){
-           System.out.println("a jout avec modification donc arraite ");
+           System.out.println("a jout avec modification donc arraite."+"\n");
        }
-       heap.offer(100);
+       heap.offer(1000);
        try {
            while (testIterator.hasNext()){
                donner+=testIterator.next();
                donner+=", ";
            }
-           System.out.println();
+           System.out.println("reussis"+"\n");
        }catch (ConcurrentModificationException a){
-           System.out.println("a jout avec modification donc arraite ");
+           System.out.println("a jout avec modification donc arraite."+"\n");
        }
-       System.out.println("test iterator remove");
+       System.out.println("test iterator remove :");
        try {
            testIterator.remove();
        }catch (UnsupportedOperationException a){
-           System.out.println("remove not a soupported operation ");
+           System.out.println("remove not a soupported operation."+"\n");
        }
 
 
