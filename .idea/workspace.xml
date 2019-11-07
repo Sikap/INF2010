@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="77036f1a-0aea-48fe-b50e-49d402456f3d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/tp3_BinaryTrees/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tp3_BinaryTrees/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp3_BinaryTrees/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/tp3_BinaryTrees/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp3_BinaryTrees/out/production/tp3_BinaryTrees/tp3/AvlTree$BinaryNode.class" beforeDir="false" afterPath="$PROJECT_DIR$/tp3_BinaryTrees/out/production/tp3_BinaryTrees/tp3/AvlTree$BinaryNode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp3_BinaryTrees/out/production/tp3_BinaryTrees/tp3/AvlTree.class" beforeDir="false" afterPath="$PROJECT_DIR$/tp3_BinaryTrees/out/production/tp3_BinaryTrees/tp3/AvlTree.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tp3_BinaryTrees/src/tp3/AvlTree.java" beforeDir="false" afterPath="$PROJECT_DIR$/tp3_BinaryTrees/src/tp3/AvlTree.java" afterDir="false" />
+    <list default="true" id="a948e052-7f35-422a-8a00-3c426266886a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inf2010.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,10 +17,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1QyUYdVeFbInLmETsD7VBK3GPSI" />
+  <component name="ProjectId" id="1TIe7PM3HZL2j91oav0u7rHH97e" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -39,30 +42,20 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="77036f1a-0aea-48fe-b50e-49d402456f3d" name="Default Changelist" comment="" />
-      <created>1568742378254</created>
+      <changelist id="a948e052-7f35-422a-8a00-3c426266886a" name="Default Changelist" comment="" />
+      <created>1573151869590</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1568742378254</updated>
-      <workItem from="1568742380224" duration="6000" />
-      <workItem from="1568917648404" duration="86000" />
-      <workItem from="1568917762862" duration="20000" />
-      <workItem from="1570130294344" duration="17000" />
-      <workItem from="1571851087090" duration="18000" />
+      <updated>1573151869590</updated>
     </task>
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
+            <State />
           </value>
         </entry>
       </map>
