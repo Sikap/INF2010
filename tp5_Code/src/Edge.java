@@ -11,6 +11,7 @@ public class Edge {
 		this.source = s;
 		this.destination = d;
 		// A completer
+		distance=dist;
 	}
      
 
