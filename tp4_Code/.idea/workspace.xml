@@ -57,7 +57,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8bd270fa-1834-4017-9528-ead3bf543d5f" name="Default Changelist" comment="" />
+      <changelist id="4ba30267-0ce1-4f97-854f-17d04d654dbf" name="Default Changelist" comment="" />
       <created>1573084475813</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -65,6 +65,7 @@
       <workItem from="1573084498927" duration="237000" />
       <workItem from="1573086205565" duration="1188000" />
       <workItem from="1573092094089" duration="1178000" />
+      <workItem from="1573153578704" duration="814000" />
     </task>
     <servers />
   </component>
