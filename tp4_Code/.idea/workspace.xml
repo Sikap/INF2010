@@ -2,15 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4ba30267-0ce1-4f97-854f-17d04d654dbf" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/tp4_Code/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/inf2010_lab4_1947701_1952627.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Affichage" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/BinaryHeap.java" beforeDir="false" afterPath="$PROJECT_DIR$/BinaryHeap.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tp4_Code/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp4_Code/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tp4_Code/BinaryHeap$HeapIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp4_Code/BinaryHeap$HeapIterator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/tp4_Code/BinaryHeap.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/tp4_Code/BinaryHeap.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tp5_Code/src/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tp5_Code/src/Graph.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -20,11 +27,15 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -57,7 +68,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8bd270fa-1834-4017-9528-ead3bf543d5f" name="Default Changelist" comment="" />
+      <changelist id="4ba30267-0ce1-4f97-854f-17d04d654dbf" name="Default Changelist" comment="" />
       <created>1573084475813</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -83,5 +94,19 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/BinaryHeap.java</url>
+          <line>285</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/tp4_Code$Main.ic" NAME="Main Coverage Results" MODIFIED="1573158069513" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

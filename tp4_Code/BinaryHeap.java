@@ -1,4 +1,4 @@
-import javafx.util.Pair;
+
 
 import java.util.*;
 
@@ -250,50 +250,40 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
 
     }
 
+    public String printSubTree(StringBuilder outputString, Integer position,String prefix)
+    {
 
+        outputString.append(prefix).append("|__").append(array[position]).append("\n") ;
+        if (position % 2 == 0)
+            prefix += "|  "; // un | et trois espace
+        else
+            prefix += "   "; // quatre espaces
+
+        outputString.append(prefix);
+        return outputString.toString();
+    }
     public String nonRecursivePrintFancyTree() {
-        String outputString = "";
+       StringBuilder outputString = new StringBuilder();
         String prefix = "";
-        Pair<String, Integer>[] prefixWithIndex = new Pair[currentSize];
-        int index = 1;
-        while (2 * index < currentSize) // Print left elements and use pair to associate prefix with index so we know the levels
+        ArrayDeque<Integer> array= new ArrayDeque<Integer> (0);
+        array.push(1);
+        while (array.size()!=0)
         {
-            outputString += prefix + "|__";
-            prefixWithIndex[index] = new Pair<>(prefix, index);
-            outputString += array[index] + "\n";
-            if (index % 2 == 0)
-                prefix += "|  "; // un | et trois espace
-            else
-                prefix += "   "; // quatre espaces
-            index = 2 * index;
+
+            Integer left =2*array.getFirst();
+            Integer right= 2*array.getFirst()+1;
+            printSubTree(outputString,array.getFirst(),prefix);
+            array.pop();
+            array.push(right);
+            array.push(left);
+            if(2*array.getFirst()>currentSize)
+            {
+                outputString.append(array.getFirst());
+            }
+
         }
-        int level = index / 2;
-        int indexKid = 2 * level;
-        int indexBrother = level + 1;
-        for (int i = 0; i < 2; i++)//Leaf of left branch
-            outputString += prefixWithIndex[level].getKey() + "|  |__" + array[indexKid + i] + "\n";
 
-        outputString += prefixWithIndex[level].getKey() + "|__" + array[indexBrother] + "\n"; // Prints right brother of left branch
-
-        for (int i = 2; i < 4; i++)//Leaf of brother to left branch
-            outputString += prefixWithIndex[level].getKey() + "   |__" + array[indexKid + i] + "\n";
-
-        while ((level / 2) != 1)//Prints the brother branch (right branch) of a left branch then goes up a level until it arrives to the root
-        {
-            level = level / 2;
-            indexBrother = level + 1;
-            outputString += prefixWithIndex[level].getKey() + "|__" + array[indexBrother] + "\n";
-            outputString += prefixWithIndex[level].getKey() + "   |__" + array[2 * indexBrother] + "\n";
-            outputString += prefixWithIndex[level].getKey() + "   |  |__" + array[4 * indexBrother] + "\n";
-            outputString += prefixWithIndex[level].getKey() + "   |  |__" + array[4 * indexBrother + 1] + "\n";
-            outputString += prefixWithIndex[level].getKey() + "   |__" + array[2 * indexBrother + 1] + "\n";
-            outputString += prefixWithIndex[level].getKey() + "      |__" + array[2 * (2 * indexBrother + 1)] + "\n";
-            if (2 * (2 * (indexBrother) + 1) + 1 > currentSize) {
-                outputString += prefixWithIndex[level].getKey() + "      |__" + "null" + "\n";
-            } else
-                outputString += prefixWithIndex[level].getKey() + "      |__" + array[2 * (2 * (level + 1) + 1) + 1] + "\n";
-        }
-        return outputString;
+        return outputString.toString();
     }
 
     public String printFancyTree() {
