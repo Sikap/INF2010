@@ -255,26 +255,34 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
         String prefix = "";
         ArrayDeque<Integer> array= new ArrayDeque<Integer> (0);
         array.push(1);
+        int i=0;
         while (array.size()!=0)
         {
             Integer left =2*array.getFirst();
             Integer right= 2*array.getFirst()+1;
             outputString.append(prefix).append("|__") ;
-            outputString.append(this.array[array.getFirst()]).append("\n");
+            int buffer = 3;// This is used to manipulate the size of the prefix
+            if(array.getFirst()<=currentSize) {
+                outputString.append(this.array[array.getFirst()]).append("\n");
+            }else outputString.append("null").append("\n");
+
             if (array.getFirst() % 2 == 0)
                 prefix+="|  " ; // un | et trois espace
             else
                 prefix +=("   "); // quatre espaces
 
-            if(2*array.getFirst()<currentSize) {
+            if(2*array.getFirst()<=currentSize) {
                 array.pop();
                 array.push(right);
                 array.push(left);
             }else {
                 if(array.getFirst()%2==0) {
-                    prefix = prefix.substring(0, (array.getFirst() - 4));
-                } else
-                prefix=prefix.substring(0,(array.getFirst()/2)+1);
+                    prefix = prefix.substring(0, prefix.length()-buffer);
+                } else if((array.getFirst()/4)==(array.getFirst()+1)/4){
+                        prefix=prefix.substring(0,prefix.length()-2*buffer);
+                }else if(array.getFirst()<currentSize) {
+                    prefix = prefix.substring(0, prefix.length() - 3*buffer);
+                }else prefix = prefix.substring(0, prefix.length() - (4*buffer));
 
                 array.pop();
             }
