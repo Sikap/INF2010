@@ -250,37 +250,34 @@ public class BinaryHeap<AnyType extends Comparable<? super AnyType>> extends Abs
 
     }
 
-    public String printSubTree(StringBuilder outputString, Integer position,String prefix)
-    {
-
-        outputString.append(prefix).append("|__").append(array[position]).append("\n") ;
-        if (position % 2 == 0)
-            prefix += "|  "; // un | et trois espace
-        else
-            prefix += "   "; // quatre espaces
-
-        outputString.append(prefix);
-        return outputString.toString();
-    }
     public String nonRecursivePrintFancyTree() {
-       StringBuilder outputString = new StringBuilder();
+        StringBuilder outputString = new StringBuilder();
         String prefix = "";
         ArrayDeque<Integer> array= new ArrayDeque<Integer> (0);
         array.push(1);
         while (array.size()!=0)
         {
-
             Integer left =2*array.getFirst();
             Integer right= 2*array.getFirst()+1;
-            printSubTree(outputString,array.getFirst(),prefix);
-            array.pop();
-            array.push(right);
-            array.push(left);
-            if(2*array.getFirst()>currentSize)
-            {
-                outputString.append(array.getFirst());
-            }
+            outputString.append(prefix).append("|__") ;
+            outputString.append(this.array[array.getFirst()]).append("\n");
+            if (array.getFirst() % 2 == 0)
+                prefix+="|  " ; // un | et trois espace
+            else
+                prefix +=("   "); // quatre espaces
 
+            if(2*array.getFirst()<currentSize) {
+                array.pop();
+                array.push(right);
+                array.push(left);
+            }else {
+                if(array.getFirst()%2==0) {
+                    prefix = prefix.substring(0, (array.getFirst() - 4));
+                } else
+                prefix=prefix.substring(0,(array.getFirst()/2)+1);
+
+                array.pop();
+            }
         }
 
         return outputString.toString();
