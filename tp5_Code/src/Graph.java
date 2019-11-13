@@ -9,8 +9,8 @@ public class Graph {
 	private List<Edge> edges; // Les arcs
 	
 	public Graph() {
-		// A compléter
-
+		nodes= new ArrayList<>();
+		edges =new ArrayList<>();
 	}
 	
 	public List<Edge> getEdgesGoingFrom(Node source) {
