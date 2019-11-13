@@ -8,8 +8,15 @@ public class Main {
 		System.out.println("TP05 : Graphes");
 		
 		// Partie 1: A completer : Création du graphe
-		
-		
+		String menuChoix="1";
+		int idDonnée;
+		while (menuChoix=="1"){
+			System.out.println("Veux tu ajouter un Node ? oui = 1 ; Non = 0");
+			//menuChoix=System.in.toString(); il faux reussi a rentré quelque chosse
+
+			System.out.println(menuChoix);
+		}
+
 		// Partie 2: A completer : Implémentation de l’algorithme Dijkstra
 		
 		Dijkstra d = new Dijkstra(g);
