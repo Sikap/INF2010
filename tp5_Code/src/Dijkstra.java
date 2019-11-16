@@ -20,8 +20,15 @@ public class Dijkstra {
 	public void findPath(Node s, Node d) {
 
 		dijkstraTable = new HashMap[graph.getNodes().size()];
-		path = new Stack<Edge>();
-		
+
+		List <Edge> edge = graph.getEdgesGoingFrom(s);
+		//dijkstraTable[0].put(s,);
+		for(int i=1;i<dijkstraTable.length;i++) {
+
+			//path.push()
+			//dijkstraTable[i].put(,0);
+
+		}
 		// A compléter
 
 		
