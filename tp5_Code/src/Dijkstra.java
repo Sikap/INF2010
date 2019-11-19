@@ -65,16 +65,14 @@ public class Dijkstra {
 	}
 	
 	public String printShortPath(Node source, Node destination) {
-		// A completer
+		findPath(source,destination);
+		setPath();
 		return null;
 	}
 
-	public void showTable() {
-		// A completer
+	private void setPath(){
 		path=new Stack<>();
 		List<Edge> edges = new ArrayList<>();
-		/*edges.addAll( dijkstraTable[0].values());
-		Node trateNode=edges.get(0).getSource();*/
 		Edge tmpEdge=null;
 		int index= dijkstraTable.length;
 		while(index!=0){
@@ -88,6 +86,12 @@ public class Dijkstra {
 				path.push(tmpEdge);
 			}
 		}
+	}
+
+	public void showTable() {
+		// A completer
+		setPath();
+		Edge tmpEdge=null;
 		String info="";
 		while (path.size()!=0){
 			tmpEdge=path.pop();
