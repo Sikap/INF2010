@@ -81,10 +81,11 @@ public class Dijkstra {
 			edges.clear();
 			if(dijkstraTable[--index]!=null){
 				edges.addAll( dijkstraTable[index].values());
-			for(int i=0;i<edges.size();i++){
-				tmpEdge=getMinimum(tmpEdge,edges.get(i));
-			}
-			path.push(tmpEdge);
+				tmpEdge=null;
+				for(int i=0;i<edges.size();i++){
+					tmpEdge=getMinimum(tmpEdge,edges.get(i));
+				}
+				path.push(tmpEdge);
 			}
 		}
 		String info="";
