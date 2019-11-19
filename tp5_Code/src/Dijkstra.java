@@ -52,8 +52,16 @@ public class Dijkstra {
 	}
 
 	private Edge getMinimum (Edge e1, Edge e2) {
-		// A completer
-		return null;
+		if(e1==null||e2==null) {
+			if (e1 == null && e2 == null) {
+				return null;
+			}else if (e1 == null) {
+				return e2;
+			}else if (e2 == null){
+				return e1;
+			}
+		}
+		return (e1.getDistance()>e2.getDistance())? e2:e1 ;
 	}
 	
 	public String printShortPath(Node source, Node destination) {
@@ -63,6 +71,28 @@ public class Dijkstra {
 
 	public void showTable() {
 		// A completer
-		
+		path=new Stack<>();
+		List<Edge> edges = new ArrayList<>();
+		/*edges.addAll( dijkstraTable[0].values());
+		Node trateNode=edges.get(0).getSource();*/
+		Edge tmpEdge=null;
+		int index= dijkstraTable.length;
+		while(index!=0){
+			edges.clear();
+			if(dijkstraTable[--index]!=null){
+				edges.addAll( dijkstraTable[index].values());
+			for(int i=0;i<edges.size();i++){
+				tmpEdge=getMinimum(tmpEdge,edges.get(i));
+			}
+			path.push(tmpEdge);
+			}
+		}
+		String info="";
+		while (path.size()!=0){
+			tmpEdge=path.pop();
+			info=Integer.toString(tmpEdge.getDistance());
+			info+=tmpEdge.getSource().getName();
+			System.out.println( info);
+		}
 	}
 }
