@@ -13,30 +13,30 @@ public class Dijkstra {
 	}
 
 	public void findPath(Node s, Node d) {
-		int nbNode=graph.getNodes().size();
-		dijkstraTable = new HashMap[nbNode];
-		Node curentNode = s;
+		int nombreOfNodes=graph.getNodes().size();
+		dijkstraTable = new HashMap[nombreOfNodes];
 		// First Iteration
+		Node curentNode = s;
 		dijkstraTable[0]= new HashMap<>();
 		dijkstraTable[0].put(s,new Edge(s,s,0));
 		// N Iteration
 		int index =1;
-		Set <Node> visitedNodes = new HashSet<>();
+		Set <Node> visitedCurentNodes = new HashSet<>();
 		while (curentNode!=d) {
-			visitedNodes.add(curentNode);
+			visitedCurentNodes.add(curentNode);
 			dijkstraTable[index] = new HashMap<>(dijkstraTable[index-1]);
 			dijkstraTable[index].remove(curentNode);
 			List<Edge> edges = graph.getEdgesGoingFrom(curentNode);
 			for (Edge i: edges)
 			{
-				Edge e = new Edge(i.getSource(),i.getDestination(),i.getDistance()+dijkstraTable[index-1].getOrDefault(curentNode,new Edge(i.getSource(),i.getDestination(),0)).getDistance());
-				boolean isCurrentNodeVisited = visitedNodes.contains(i.getDestination());
+				int minDistanceOfPreviousIteration =dijkstraTable[index-1].getOrDefault(curentNode,new Edge(i.getSource(),i.getDestination(),0)).getDistance();
+				Edge e = new Edge(i.getSource(),i.getDestination(),i.getDistance()+minDistanceOfPreviousIteration);
+				boolean isCurrentNodeVisited = visitedCurentNodes.contains(i.getDestination());
 				boolean hasRoute = dijkstraTable[index-1].containsKey(i.getDestination());
 				boolean isBetterRoute = ( hasRoute &&  dijkstraTable[index - 1].get(i.getDestination()).getDistance() > e.getDistance() );
 				if(!isCurrentNodeVisited && (!hasRoute || isBetterRoute))
 				dijkstraTable[index].put(e.getDestination(),e);
 			}
-
 			curentNode = getMinimum(dijkstraTable[index]);
 			index++;
 		}
@@ -49,6 +49,7 @@ public class Dijkstra {
 				min = map.get(Key); 
 			}
 		}
+		assert min != null;
 		return min.getDestination();
 	}
 
@@ -111,7 +112,7 @@ public class Dijkstra {
 	}
 
 	public void showTable() {
-		// A completer
+
 		List<Edge> edges = new ArrayList<>();
 		Edge tmpEdge=null;
 		String txt="";
