@@ -33,8 +33,8 @@ public class Dijkstra {
 				Edge e = new Edge(i.getSource(),i.getDestination(),i.getDistance()+minDistanceOfPreviousIteration);
 				boolean isCurrentNodeVisited = visitedCurentNodes.contains(i.getDestination());
 				boolean hasRoute = dijkstraTable[index-1].containsKey(i.getDestination());
-				boolean isBetterRoute = ( hasRoute &&  dijkstraTable[index - 1].get(i.getDestination()).getDistance() > e.getDistance() );
-				if(!isCurrentNodeVisited && (!hasRoute || isBetterRoute))
+				boolean hasBetterRoute = ( hasRoute &&  dijkstraTable[index - 1].get(i.getDestination()).getDistance() > e.getDistance() );
+				if(!isCurrentNodeVisited && (!hasRoute || hasBetterRoute))
 				dijkstraTable[index].put(e.getDestination(),e);
 			}
 			curentNode = getMinimum(dijkstraTable[index]);
@@ -70,26 +70,12 @@ public class Dijkstra {
 		findPath(source,destination);
 		setPath();
 		String info="";
-		Stack<Node> stackNode=new Stack<>();
 		Edge tmpEdge=null;
-		Node tmpNode=null,arriverNode;
-		tmpEdge=path.pop();
-		arriverNode=tmpEdge.getSource();
-		for (int i=0;i<path.size();i++) {
-			tmpEdge=path.get(i);
-			if(tmpNode==null||tmpNode==tmpEdge.getDestination()){
-				stackNode.push(tmpEdge.getDestination());
-				if(arriverNode.getName()==tmpEdge.getSource().getName()){
-					break;
-				}
-				tmpNode=tmpEdge.getSource();
-			}
-
+		while (path.size()!=0){
+			tmpEdge=path.pop();
+			info+=tmpEdge.getSource().getName();
 		}
-		stackNode.push(arriverNode);
-		while (stackNode.size()!=0){
-			info+=stackNode.pop().getName();
-		}
+		info+=tmpEdge.getDestination().getName();
 		return info;
 	}
 
@@ -97,16 +83,17 @@ public class Dijkstra {
 		path=new Stack<>();
 		List<Edge> edges = new ArrayList<>();
 		Edge tmpEdge=null;
-		int index= dijkstraTable.length;
+		int index= dijkstraTable.length-1;
 		while(index!=0){
 			edges.clear();
-			if(dijkstraTable[--index]!=null){
+			if(dijkstraTable[index]!=null){
 				edges.addAll( dijkstraTable[index].values());
 				tmpEdge=null;
 				for(int i=0;i<edges.size();i++){
 					tmpEdge=getMinimum(tmpEdge,edges.get(i));
 				}
 				path.push(tmpEdge);
+				index=tmpEdge.getSource().getId();
 			}
 		}
 	}
@@ -117,6 +104,7 @@ public class Dijkstra {
 		Edge tmpEdge=null;
 		String txt="";
 		int index =0,index2=0;
+
 		while (index<dijkstraTable.length){
 			txt="";
 			if(dijkstraTable[index]!=null){
@@ -132,7 +120,6 @@ public class Dijkstra {
 					txt+=tmpEdge.getSource().getName();
 					txt+=" ";
 					index2=tmpEdge.getDestination().getId()+1;
-
 				}
 			}
 			System.out.println(txt);
