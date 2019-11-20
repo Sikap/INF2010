@@ -51,12 +51,12 @@ public class Main {
 
         Dijkstra d = new Dijkstra(g);
 
-        d.findPath(A,D);
+        d.findPath(A,G);
 
         d.showTable();
 
         // Partie 3 : Afficher le chemin le plus court
-        System.out.println(d.printShortPath(A, D/* Spécifiez les paramètres */));
+        System.out.println(d.printShortPath(A, D));
 
     }
 }

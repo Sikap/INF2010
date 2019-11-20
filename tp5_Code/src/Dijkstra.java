@@ -68,18 +68,25 @@ public class Dijkstra {
 		findPath(source,destination);
 		setPath();
 		String info="";
+		Stack<Node> stackNode=new Stack<>();
 		Edge tmpEdge=null;
-		Node tmpNode=null,sourceNode;
+		Node tmpNode=null,arriverNode;
 		tmpEdge=path.pop();
-		while (path.size()!=0){//ne marge pas dans tous les ca de fifure
-			tmpEdge=path.pop();
-			if (tmpNode == null || tmpEdge.getSource() == tmpNode) {
-				sourceNode=tmpNode;
-				info+=tmpEdge.getSource().getName();
-				tmpNode= tmpEdge.getDestination();
+		arriverNode=tmpEdge.getSource();
+		for (int i=0;i<path.size();i++) {
+			tmpEdge=path.get(i);
+			if(tmpNode==null||tmpNode==tmpEdge.getDestination()){
+				stackNode.push(tmpEdge.getDestination());
+				if(arriverNode.getName()==tmpEdge.getSource().getName()){
+					break;
+				}
+				tmpNode=tmpEdge.getSource();
 			}
-			if(path.size()==0)
-				info+=tmpEdge.getDestination().getName();
+
+		}
+		stackNode.push(arriverNode);
+		while (stackNode.size()!=0){
+			info+=stackNode.pop().getName();
 		}
 		return info;
 	}
