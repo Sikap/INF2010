@@ -111,14 +111,30 @@ public class Dijkstra {
 
 	public void showTable() {
 		// A completer
-		setPath();
+		List<Edge> edges = new ArrayList<>();
 		Edge tmpEdge=null;
-		String info="";
-		while (path.size()!=0){
-			tmpEdge=path.pop();
-			info=Integer.toString(tmpEdge.getDistance());
-			info+=tmpEdge.getSource().getName();
-			System.out.println( info);
+		String txt="";
+		int index =0,index2=0;
+		while (index<dijkstraTable.length){
+			txt="";
+			if(dijkstraTable[index]!=null){
+				edges.clear();
+				edges.addAll( dijkstraTable[index].values());
+				index2=0;
+				for(int i =0;i<edges.size();i++){
+					tmpEdge=edges.get(i);
+					for(int y=index2;y<tmpEdge.getDestination().getId();y++){
+						txt+="   ";
+					}
+					txt+=Integer.toString(tmpEdge.getDistance());
+					txt+=tmpEdge.getSource().getName();
+					txt+=" ";
+					index2=tmpEdge.getDestination().getId()+1;
+
+				}
+			}
+			System.out.println(txt);
+			index++;
 		}
 	}
 }

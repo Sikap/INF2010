@@ -56,7 +56,7 @@ public class Main {
         d.showTable();
 
         // Partie 3 : Afficher le chemin le plus court
-        System.out.println(d.printShortPath(A, D));
+        System.out.println(d.printShortPath(A, G));
 
     }
 }
