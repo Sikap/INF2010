@@ -32,7 +32,8 @@ public class Dijkstra {
 				Edge e = new Edge(i.getSource(),i.getDestination(),i.getDistance()+dijkstraTable[index-1].getOrDefault(curentNode,new Edge(i.getSource(),i.getDestination(),0)).getDistance());
 				boolean isCurrentNodeVisited = visitedNodes.contains(i.getDestination());
 				boolean hasRoute = dijkstraTable[index-1].containsKey(i.getDestination());
-				if(!isCurrentNodeVisited && (!hasRoute || ( hasRoute &&  dijkstraTable[index - 1].get(i.getDestination()).getDistance() > e.getDistance() )))
+				boolean isBetterRoute = ( hasRoute &&  dijkstraTable[index - 1].get(i.getDestination()).getDistance() > e.getDistance() );
+				if(!isCurrentNodeVisited && (!hasRoute || isBetterRoute))
 				dijkstraTable[index].put(e.getDestination(),e);
 			}
 
