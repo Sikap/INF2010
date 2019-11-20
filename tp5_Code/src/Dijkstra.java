@@ -67,7 +67,21 @@ public class Dijkstra {
 	public String printShortPath(Node source, Node destination) {
 		findPath(source,destination);
 		setPath();
-		return null;
+		String info="";
+		Edge tmpEdge=null;
+		Node tmpNode=null,sourceNode;
+		tmpEdge=path.pop();
+		while (path.size()!=0){//ne marge pas dans tous les ca de fifure
+			tmpEdge=path.pop();
+			if (tmpNode == null || tmpEdge.getSource() == tmpNode) {
+				sourceNode=tmpNode;
+				info+=tmpEdge.getSource().getName();
+				tmpNode= tmpEdge.getDestination();
+			}
+			if(path.size()==0)
+				info+=tmpEdge.getDestination().getName();
+		}
+		return info;
 	}
 
 	private void setPath(){
