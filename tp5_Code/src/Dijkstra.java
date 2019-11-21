@@ -99,31 +99,51 @@ public class Dijkstra {
 	}
 
 	public void showTable() {
-
-		List<Edge> edges = new ArrayList<>();
-		Edge tmpEdge=null;
-		String txt="";
-		int index =0,index2=0;
-
-		while (index<dijkstraTable.length){
-			txt="|";
-			if(dijkstraTable[index]!=null){
-				edges.clear();
-				edges.addAll( dijkstraTable[index].values());
-				index2=0;
-				for(int i =0;i<edges.size();i++){
-					tmpEdge=edges.get(i);
-					for(int y=index2;y<tmpEdge.getDestination().getId();y++){
-						txt+="  |";
-					}
-					txt+=Integer.toString(tmpEdge.getDistance());
-					txt+=tmpEdge.getSource().getName();
-					txt+="|";
-					index2=tmpEdge.getDestination().getId()+1;
-				}
-			}
-			System.out.println(txt);
-			index++;
-		}
-	}
+        List<Edge> edges = new ArrayList<>();
+        Edge tmpEdge=null;
+        String txt="";
+        int index =0,index2=0;
+        List<Node> nodeMap=new ArrayList();
+        while (index<dijkstraTable.length){
+            edges.clear();
+            if(dijkstraTable[index]!=null){
+                edges.addAll( dijkstraTable[index].values());
+                for(int i=0;i<edges.size();i++){
+                    if(!nodeMap.contains(edges.get(i).getDestination())){
+                        nodeMap.add(edges.get(i).getDestination());
+                    }
+                }
+            }
+            index++;
+        }
+        for (Node a: nodeMap) {
+            txt+=a.getName()+" |";
+        }
+        System.out.println(txt);
+        index=0;
+        while (index<dijkstraTable.length){
+            txt="";
+            if(dijkstraTable[index]!=null){
+                edges.clear();
+                edges.addAll( dijkstraTable[index].values());
+                index2=0;
+                int y=0;
+                for(int i=0;i<edges.size();i++){
+                    tmpEdge=edges.get(i);
+                    for(y=index2;y<tmpEdge.getDestination().getId();y++){
+                        txt+="  |";
+                    }
+                    txt+=Integer.toString(tmpEdge.getDistance());
+                    txt+=tmpEdge.getSource().getName();
+                    txt+="|";
+                    index2=tmpEdge.getDestination().getId()+1;
+                }
+                for(;y<dijkstraTable.length-1;y++){
+                    txt+="  |";
+                }
+            }
+            System.out.println(txt);
+            index++;
+        }
+    }
 }

@@ -52,9 +52,9 @@ public class Main {
         Dijkstra d = new Dijkstra(g);
 
         d.findPath(A,G);
-        System.out.println("Table dijkstra");
+        System.out.println("Table dijkstra:");
         d.showTable();
-
+        System.out.println();
         // Partie 3 : Afficher le chemin le plus court
         System.out.println("Le chemin le plus court:");
         System.out.println(d.printShortPath(A,G));
