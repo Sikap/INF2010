@@ -106,7 +106,7 @@ public class Dijkstra {
 		int index =0,index2=0;
 
 		while (index<dijkstraTable.length){
-			txt="";
+			txt="|";
 			if(dijkstraTable[index]!=null){
 				edges.clear();
 				edges.addAll( dijkstraTable[index].values());
@@ -114,11 +114,11 @@ public class Dijkstra {
 				for(int i =0;i<edges.size();i++){
 					tmpEdge=edges.get(i);
 					for(int y=index2;y<tmpEdge.getDestination().getId();y++){
-						txt+="   ";
+						txt+="  |";
 					}
 					txt+=Integer.toString(tmpEdge.getDistance());
 					txt+=tmpEdge.getSource().getName();
-					txt+=" ";
+					txt+="|";
 					index2=tmpEdge.getDestination().getId()+1;
 				}
 			}
